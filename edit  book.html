@@ -1,0 +1,61 @@
+<h2>Find Book to Edit</h2>
+
+<form method="post" action="">
+
+Enter Book ID or Name<br />
+
+<input type="text" size="20" name="search_query">
+<br /><br />
+
+<input type="submit" value="Search">
+
+</form>
+
+<hr>
+
+<h1>Edit Book</h1>
+
+<form method="post" action="">
+
+Book ID<br />
+
+<input type="text" size="15" name="edit_book_id">
+<br /><br />
+
+Book Name<br />
+
+<input type="text" size="30" maxlength="100" name="edit_book_name">
+<br /><br />
+
+Author Name<br />
+
+<input type="text" size="20" maxlength="50" name="edit_author_name">
+<br /><br />
+
+Category<br />
+
+<select name="edit_category">
+<option value="Technology">Technology</option>
+<option value="Science">Science</option>
+<option value="Comedy">Comedy</option>
+<option value="Fiction">Fiction</option>
+<option value="Romance">Romance</option>
+<option value="History">History</option>
+<option value="Others">Others</option>
+</select>
+
+<br /><br />
+
+Description<br />
+
+<textarea rows="5" cols="50" name="descri">
+</textarea>
+
+<br /><br />
+
+<input type="submit" value="Update Book">
+
+</form>
+
+</body>
+</html>
