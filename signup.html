@@ -4,58 +4,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Online Library - Login</title>
 </head>
 <body>
-      <!-- Navigation Bar -->
-    <nav> 
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |        
-        <a href="login.html">Login</a> |
-        
-         
+      <!-- Navigation Bar  
+       <header>
+          <nav>
+            <div class="nav-logo">
+                <h2>EterSpace</h2>
+            </div>
+            <div class="nav-menu">
+              <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="login.html">Login</a></li>
+            
+              </ul>
+                  
+            </div>
+      
     </nav>
+       </header>
+       -->
+    
 
-    <hr>
-
-  <h1>  Online Library</h1>
-  <p>Your gateway to knowledge</p>
-
-  <hr>
+    
 
   
-  <h2>Create Account</h2>
+   
+  <div class="container">
+    <h2 id="form-title">Create Account</h2>
+        <form action="#" method="post">
 
-  <form action="#" method="post">
+    <label for="su-username">Username</label> <br>
+    <input type="text" id="su-username" name="username" placeholder="Choose a username"   minlength="3"><br><br>
 
-    <label for="su-username">Username:</label><br>
-    <input type="text" id="su-username" name="username" placeholder="Choose a username" required minlength="3"><br><br>
+    <label for="su-email">Email</label><br> 
+    <input type="email" id="su-email" name="email" placeholder="your@email.com"  ><br><br>
 
-    <label for="su-email">Email:</label><br>
-    <input type="email" id="su-email" name="email" placeholder="your@email.com" required><br><br>
+    <label for="su-password">Password</label><br>
+    <input type="password" id="su-password" name="password" placeholder="Min 6 characters"   minlength="6"><br><br>
 
-    <label for="su-password">Password:</label><br>
-    <input type="password" id="su-password" name="password" placeholder="Min 6 characters" required minlength="6"><br><br>
-
-    <label for="su-confirm">Confirm Password:</label><br>
-    <input type="password" id="su-confirm" name="confirm_password" placeholder="Repeat your password" required><br><br>
-
-    <fieldset>
-      <legend>Account Type (is_admin):</legend>
-      <input type="radio" id="role-user" name="is_admin" value="0" checked>
-      <label for="role-user">User</label>
-      &nbsp;&nbsp;
-      <input type="radio" id="role-admin" name="is_admin" value="1">
-      <label for="role-admin">Admin</label>
-    </fieldset>
+    <label for="su-confirm">Confirm Password</label><br>
+    <input type="password" id="su-confirm" name="confirm_password" placeholder="Repeat your password"  ><br><br>
+    
 
     <br>
-    <button type="submit" ><a href="admin_book_list.html"> Sign up as admin</a></button>
-    <button type="submit" ><a href="user_book_list.html"> Sign up as user</a></button>
-    
+   <div class="radio">
+       <input type="radio" id="role-user" name="is_admin" value="0" checked>
+       <label for="role-user">User</label>
+       &nbsp;&nbsp;
+       <input type="radio" id="role-admin" name="is_admin" value="1">
+       <label for="role-admin">Admin</label>
+   </div>
+
+   <div class="submit">
+           <input type="submit" id="mySubmit" value="Sign Up">
+    </div>
+
   </form>
 
-  <p>Already have an account? <a href="signin.html">Login</a></p>
+  <p id="quest">Already have an account? <a href="login.html">Login</a></p>
 
+  </div>
+
+ <script src="main.js"></script>
 </body>
 </html>
