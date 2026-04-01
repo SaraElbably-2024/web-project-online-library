@@ -1,117 +1,521 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Borrowed Books</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library | Lumina</title>
+    <style>
+:root {
+ --dark-blue: #194569;
+--medium-blue: #5F84A2;
+--soft-blue: #91AEC4;
+--white: #ffffff;
+--pale-blue-transparent: rgba(219, 236, 244, 0.94)}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+margin: 0;
+padding: 0;
+min-height: 100vh;
+color: var(--dark-blue);
+background-image: url('borrowedbook-background.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+background-attachment: fixed;
+overflow-x: scroll;
+        }
+
+       
+/* Container*/
+.container {
+max-width: 1200px;
+margin: 40px auto;
+padding: 30px;
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(10px);
+border-radius: 30px;
+text-align: center;
+box-shadow: 0 15px 35px black;}
+
+h1 {
+color: white;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+margin-bottom: 30px;
+font-size: 2.2rem;}
+
+/* filter buttons */
+
+.filter-button-shape {
+padding: 12px 28px;
+border: none;
+border-radius: 25px;
+background: var(--dark-blue);
+color: white;
+cursor: pointer;
+transition: all 0.3s ease;
+font-weight: 600;
+font-size: 0.95rem;
+box-shadow: 0 4px 6px black;}
+
+.filter-button-place {
+margin-bottom: 35px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 10px;}
+
+.filter-button:hover, .filter-button.active {
+background: var(--medium-blue);
+transform: translateY(-3px);
+box-shadow: 0 6px 12px black; }
+
+/* التوزيعه */
+.books-grid {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 30px;
+animation: fadein 0.8s ease;}
+
+@keyframes fadein {
+from {
+opacity: 0;
+transform: translateY(20px);}
+to {
+opacity: 1;
+transform: translateY(0);}}
+
+.book-card {
+background: var(--pale-blue-transparent);
+width: 230px;
+padding: 25px;
+border-radius: 20px;
+box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+transition: 0.3s;
+display: flex;
+flex-direction: column;
+align-items: center;
+border: 1px solid rgba(255,255,255,0.3);}
+
+.book-card:hover {
+transform: translateY(-10px);
+background: white;
+box-shadow: 0 15px 35px rgba(0,0,0,0.25);}
+
+.book-card img {
+width: 170px;
+height: 250px;
+object-fit: cover;
+border-radius: 10px;
+box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+margin-bottom: 20px;
+}
+
+.book-card h3 {
+font-size: 1.15rem;
+margin: 10px 0 5px;
+height: 50px;
+overflow: hidden;
+color: var(--dark-blue);
+}
+
+.book-card p {
+font-size: 0.95rem;
+color: var(--medium-blue);
+margin-bottom: 20px;
+font-style: italic;
+}
+
+/* هل متاح ولا لا و زرار الارجع و  */
+.status-label {
+font-weight: bold;
+font-size: 0.85rem;
+margin-bottom: 20px;
+padding: 6px 15px;
+border-radius: 15px;
+letter-spacing: 0.5px;
+}
+
+.unavailable {
+background: #5F84A2;
+color: white;
+border: 1px solid black;
+}
+
+.available {
+background: #91AEC4;
+color: #3c763d;
+border: 1px solid #d6e9c6;
+}
+
+.return-button {
+width: 100%;
+padding: 12px;
+border: none;
+border-radius: 10px;
+background: var(--dark-blue);
+color: white;
+font-weight: bold;
+cursor: pointer;
+transition: 0.3s;
+font-size: 1rem;
+}
+
+.return-button:hover {
+background: #91AEC4;
+transform: scale(1.03);
+}
+</style>
 </head>
 <body>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
+
+ <nav>  
+<div class="nav-links">
+ <a href="index.html">Home</a>
+<a href="user_book_list.html">Books List</a>
+<a href="Borrowed_books.html" class="active">My Library</a>
+<a href="search.html">Search</a>
+ <a href="index.html" class="logout-btn">Log out</a>
+</div>
+</nav>
+
+ <div class="container">
+     <h1>My Borrowed Collection</h1>
+
+     <div class="filter-button-place">
+         <button class="filter-button-shape active" onclick="filterBooks('all', this)">All Books</button>
+         <button class="filter-button-shape" onclick="filterBooks('Computer Science', this)">CS & Tech</button>
+         <button class="filter-button-shape" onclick="filterBooks('Fiction', this)">Fiction</button>
+
+         <button class="filter-button-shape " onclick="filterBooks('Programming', this)">Programming</button>
+         <button class="filter-button-shape " onclick="filterBooks('Psychology', this)">Psychology</button>
+         <button class="filter-button-shape " onclick="filterBooks('Religious', this)">Religious</button>
+         <button class="filter-button-shape " onclick="filterBooks('Self Help', this)">Self Help</button>
+       
+
+     </div>
+
+     <div class="books-grid" id="booksGrid">
+
+         <div class="book-card" data-category="Fiction">
+             <img src="assets/Fiction/3enab-el-tha3lab.jpg" alt="قضية عنب الثعلب">
+             <h3>قضية عنب الثعلب</h3>
+             <p>بواسطة ميرنا المهدي</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Fiction">
+             <img src="assets/Fiction/abadol.jpg" alt="أبادول">
+             <h3>أبادول</h3>
+             <p>بواسطة حنان لاشين</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Fiction">
+             <img src="assets/Fiction/amwag_akma.jpg" alt="أمواج أكما">
+             <h3>أمواج أكما</h3>
+             <p>بواسطة عمرو عبد الحميد</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Fiction">
+             <img src="assets/Fiction/ekadoly.jpg" alt="إيكادولي">
+             <h3>إيكادولي</h3>
+             <p>بواسطة حنان لاشين</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Fiction">
+             <img src="assets/Fiction/fe-mmr-el-fe2ran.jpg" alt="في ممر الفئران">
+             <h3>في ممر الفئران</h3>
+             <p>بواسطة أحمد خالد توفيق</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Fiction">
+             <img src="assets/Fiction/garten_rules.jpg" alt="قواعد جارتين">
+             <h3>قواعد جارتين</h3>
+             <p>بواسطة عمرو عبد الحميد</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Fiction">
+             <img src="assets/Fiction/hebta.jpg" alt="هيبتا">
+             <h3>هيبتا</h3>
+             <p>بواسطة محمد صادق</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Fiction">
+             <img src="assets/Fiction/khof.jpg" alt="خوف">
+             <h3>خوف</h3>
+             <p>بواسطة أسامة المسلم</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Fiction">
+             <img src="assets/Fiction/loz-mr.jpg" alt="قضية لوز مر">
+             <h3>قضية لوز مر</h3>
+             <p>بواسطة ميرنا المهدي</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Fiction">
+             <img src="assets/Fiction/makhaleb.jpg" alt="قضية مخالب القط">
+             <h3>قضية مخالب القط</h3>
+             <p>بواسطة ميرنا المهدي</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Fiction">
+             <img src="assets/Fiction/minto.jpg" alt="مِنتو">
+             <h3>مِنتو</h3>
+             <p>بواسطة عمرو عبد الحميد</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+
+         <div class="book-card" data-category="Religious">
+             <img src="assets/religious/buit_menwarah.jpg" alt="بيوت منورة">
+             <h3>بيوت منورة</h3>
+             <p>بواسطة هالة سمير</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Religious">
+             <img src="assets/religious/ela_Allah.jpg" alt="إلى الله">
+             <h3>إلى الله</h3>
+             <p>بواسطة أمير منير</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Religious">
+             <img src="assets/religious/fatetni_salah.jpg" alt="فاتتني صلاة">
+             <h3>فاتتني صلاة</h3>
+             <p>بواسطة إسلام جمال</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Religious">
+             <img src="assets/religious/Ila_AlMunkasira_Qulubuhum.webp" alt="إلى المنكسرة قلوبهم">
+             <h3>إلى المنكسرة قلوبهم</h3>
+             <p>بواسطة أدهم شرقاوي</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Religious">
+             <img src="assets/religious/konie_sahabia.png" alt="كوني صحابية">
+             <h3>كوني صحابية</h3>
+             <p>بواسطة حنان لاشين</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Religious">
+             <img src="assets/religious/lakanood.webp" alt="لكنود">
+             <h3>لكنود</h3>
+             <p>بواسطة إسلام جمال</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Religious">
+             <img src="assets/religious/Manhagiah_Alsaier_ela_Allah.webp" alt="منهجية السير إلى الله">
+             <h3>منهجية السير إلى الله</h3>
+             <p>بواسطة د. علي أبو الحسن</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Religious">
+             <img src="assets/religious/men_alsefr.jpg" alt="من الصفر">
+             <h3>من الصفر</h3>
+             <p>بواسطة ياسر ممدوح</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Religious">
+             <img src="assets/religious/rsaael_men_AlQuran.jpg" alt="رسائل من القرآن">
+             <h3>رسائل من القرآن</h3>
+             <p>بواسطة أدهم شرقاوي</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Religious">
+             <img src="assets/religious/zad.webp" alt="زاد">
+             <h3>زاد</h3>
+             <p>بواسطة إسلام جمال</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+
+         <div class="book-card" data-category="Self Help">
+             <img src="assets/self_help/atomic_habits.png" alt="Atomic Habits">
+             <h3>Atomic Habits</h3>
+             <p>by James Clear</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Self Help">
+             <img src="assets/self_help/deep_work.jpg" alt="Deep Work">
+             <h3>Deep Work</h3>
+             <p>by Cal Newport</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Self Help">
+             <img src="assets/self_help/how_to_heal_your_inner_child.jpg" alt="Heal Your Inner Child">
+             <h3>Heal Your Inner Child</h3>
+             <p>by Simon Chapple</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Self Help">
+             <img src="assets/self_help/make_your_bed.jpg" alt="Make Your Bed">
+             <h3>Make Your Bed</h3>
+             <p>by William H. McRaven</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Self Help">
+             <img src="assets/self_help/rich_dad_poor_dad.jpg" alt="Rich Dad Poor Dad">
+             <h3>Rich Dad Poor Dad</h3>
+             <p>by Robert Kiyosaki</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Self Help">
+             <img src="assets/self_help/the_7habits_of_highly_effictive_people.jpg" alt="7 Habits">
+             <h3>The 7 Habits</h3>
+             <p>by Stephen R. Covey</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Self Help">
+             <img src="assets/self_help/The_Idiot_Brain.jpg" alt="The Idiot Brain">
+             <h3>The Idiot Brain</h3>
+             <p>by Dean Burnett</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Self Help">
+             <img src="assets/self_help/the_power_of_now.jpg" alt="The Power of Now">
+             <h3>The Power of Now</h3>
+             <p>by Eckhart Tolle</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Self Help">
+             <img src="assets/self_help/the_miracle_morning.jpg" alt="The Miracle Morning">
+             <h3>The Miracle Morning</h3>
+             <p>by Hal Elrod</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+
+         <div class="book-card" data-category="Programming">
+             <img src="assets/Programming/clean-code.jpg" alt="Clean Code">
+             <h3>Clean Code</h3>
+             <p>by Robert C. Martin</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="Programming">
+             <img src="assets/Programming/ds-and-algo.webp" alt="Data Structures">
+             <h3>Data Structures</h3>
+             <p>by Mark Allen Weiss</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="CS & Tec">
+             <img src="assets/cs_and_tech/network book1.jpeg" alt="Computer Networking">
+             <h3>Computer Networking</h3>
+             <p>by Jason Callaway</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+         <div class="book-card" data-category="CS & Tec">
+             <img src="assets/cs_and_tech/OIP (1).webp" alt="Algorithms">
+             <h3>Intro. to Algorithms</h3>
+             <p>by Thomas H. Cormen</p>
+             <div class="status-label unavailable">Borrowed</div>
+             <button class="return-button" onclick="returnBook(this)">Return Book</button>
+         </div>
+
+     </div>
+
+ </div>
+
+    <script>
+      
+        function loadBorrowedBooks() {
+        const booksGrid = document.getElementById('booksGrid');
+
+       
+        let borrowedBooks = JSON.parse(localStorage.getItem('myBorrowedBooks')) || [];
+
+        booksGrid.innerHTML = '';
+
+        if (borrowedBooks.length === 0) {
+        booksGrid.innerHTML = "<h2 style='color: white; width: 100%;'>Your library is empty.</h2>";
+        return;
+        }
+
+       
+        borrowedBooks.forEach((book, index) => {
+        const card = document.createElement('div');
+        card.className = 'book-card';
+        card.setAttribute('data-category', book.category);
+        card.innerHTML = `
+        <img src="${book.image}" alt="${book.title}">
+        <h3>${book.title}</h3>
+        <p>by ${book.author}</p>
+        <div class="status-label unavailable">Borrowed</div>
+        <button class="return-button" onclick="returnBook(${index}, this)">Return Book</button>
+        `;
+        booksGrid.appendChild(card);
+        });
+        }
+
         
-        <a href="search.html">Search</a> |
-        <a href="Borrowed_books.html">Borrow book</a>|
-        <a href="index.html">Log out</a>
-        </nav>
-         <hr>
-    <h1>My Borrowed Books</h1>
-    <hr>
+        function returnBook(index, button) {
+        let borrowedBooks = JSON.parse(localStorage.getItem('myBorrowedBooks')) || [];
+        const title = borrowedBooks[index].title;
+
+        if (confirm(`Are you sure you want to return "${title}"?`)) {
+        const card = button.parentElement;
+
+        // تأثير اختفاء (Animation)
+        card.style.transition = "all 0.5s ease";
+        card.style.opacity = "0";
+        card.style.transform = "scale(0.8)";
+
+        setTimeout(() => {
+       
+        borrowedBooks.splice(index, 1);
+       
+        localStorage.setItem('myBorrowedBooks', JSON.stringify(borrowedBooks));
+       
+        loadBorrowedBooks();
+        }, 500);
+        }
+        }
+
+        
+        function filterBooks(category, button) {
+        const buttons = document.querySelectorAll('.filter-button-shape');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const cards = document.querySelectorAll('.book-card');
+        cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+        card.style.display = 'flex';
+        } else {
+        card.style.display = 'none';
+        }
+        });
+        }
+
+        window.onload = loadBorrowedBooks;
+    </script>
    
-
-    <!--helped Hehehe--> <div style="width:800px; margin:0 auto; border:1px solid #ccc; padding:30px;
-    text-align:left; border-radius:10px;
-    background-color: white; box-shadow: 0 40px 8px rgba(0,0,0,0.1);">
-    <!---->
-        <div>
-
-            <div id="book1" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="71q5PkuN7XL._SL1500_.jpg" width="100" height="140"><br>
-                <strong>Clean Code</strong><br>
-                <em>Robert Martin</em><br>
-                Borrowed: 1/3/2026<br>
-                Return: 10/3/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-         
-            <div id="book2" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="OIP.webp" width="100" height="140"><br>
-                <strong>Data Structures</strong><br>
-                <em>Mark Allen Weiss</em><br>
-                Borrowed: 2/3/2026<br>
-                Return: 12/3/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-  
-            <div id="book3" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="OIP (1).webp" width="100" height="140"><br>
-                <strong>Algorithms</strong><br>
-                <em>Thomas H. Cormen</em><br>
-                Borrowed: 5/3/2026<br>
-                Return: 15/3/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-            <div id="book4" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="download.webp" width="100" height="140"><br>
-                <strong>Healing the Child Within</strong><br>
-                <em>Charles L. Whitfield</em><br>
-                Borrowed: 7/8/2023<br>
-                Return: 21/6/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-
-            <div id="book5" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="OIP (2).webp" width="100" height="140"><br>
-                <strong>The Ordinary Myth </strong><br>
-                <em> GaborMaté</em><br>
-                Borrowed: 8/3/2026<br>
-                Return: 15/9/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-            <div id="book6" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="OIP (3).webp" width="100" height="140"><br>
-                <strong>Gartin_Rules_Series</strong><br>
-                <em>Amr Abdel Hamid</em><br>
-                Borrowed: 19/7/2025<br>
-                Return: 20/6/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-            <div id="book7" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="OIP (4).webp" width="100" height="140"><br>
-                <strong>Noah Alfi_Series</strong><br>
-                <em>Mirna El_Mahdy</em><br>
-                Borrowed: 1/2/2026<br>
-                Return: 10/4/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-
-        </div>
-
 </body>
 </html>
