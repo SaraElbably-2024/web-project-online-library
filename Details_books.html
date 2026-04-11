@@ -267,14 +267,13 @@ background: var(--soft-blue);}
     </div>
 
     <script>
-// الربط اهي
-    function goToDetails(title, author, id, cat, year, copies, desc, img) {
-    const selectedBook = { title, author, id, cat, year, copies, description: desc, image: img };
-    localStorage.setItem('selectedBook', JSON.stringify(selectedBook));
-    window.location.href = "book_details.html";
-}
-        
-//_____________________________________________________________________________________________
+        window.onload = function() {
+        const book = JSON.parse(localStorage.getItem('selectedBook'));
+        if (book) {
+        fillData(book.title, book.author, book.id, book.cat, book.year, book.copies, book.description, book.image);
+        }
+        };
+
         function fillData(title, author, id, cat, year, copies, description, imgSource) {
         document.getElementById('book-title').innerText = title;
         document.getElementById('author-name').innerText = author;
@@ -286,6 +285,7 @@ background: var(--soft-blue);}
         document.getElementById('main-book-img').src = imgSource;
         }
 
+        // 3. تحديث البيانات لما ندوس على المقترحات (Suggestions)
         function updateDetails(title, author, id, cat, year, copies, description, imgSource) {
         const container = document.getElementById('details-container');
         container.style.opacity = "0.5";
@@ -293,10 +293,12 @@ background: var(--soft-blue);}
         setTimeout(() => {
         fillData(title, author, id, cat, year, copies, description, imgSource);
         container.style.opacity = "1";
+        // حفظ الكتاب الجديد في الذاكرة عشان لو عمل Refresh
         localStorage.setItem('selectedBook', JSON.stringify({title, author, id, cat, year, copies, description, image: imgSource}));
         }, 150);
         }
 
+        // 4. دالة الاستعارة
         function borrowBook() {
         const bookData = {
         title: document.getElementById('book-title').innerText,
@@ -317,13 +319,6 @@ background: var(--soft-blue);}
         }
 
         function goToBookList() { window.location.href = "user_book_list.html"; }
-      
-if (book) {
-fillData(book.title, book.author, book.id, book.cat, book.year, book.copies, book.description, book.image);
-}
-};
- window.onload = function() {
-const book = JSON.parse(localStorage.getItem('selectedBook'));
     </script>
 </body>
 </html>

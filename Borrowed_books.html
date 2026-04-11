@@ -170,113 +170,58 @@ background: #d9534f;
 </div>
 
 <script>
+    function displayBorrowedBooks(filterValue = 'all') {
+    const grid = document.getElementById('booksGrid');
+    // بنجيب بس اللي اليوزر استعاره فعلياً
+    let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
 
-        let myBooks = [
-        // Fiction
-        { title: "قضية عنب الثعلب", author: "ميرنا المهدي", category: "Fiction", image: "assets/Fiction/3enab-el-tha3lab.jpg" },
-        { title: "أبادول", author: "حنان لاشين", category: "Fiction", image: "assets/Fiction/abadol.jpg" },
-        { title: "أمواج أكما", author: "عمرو عبد الحميد", category: "Fiction", image: "assets/Fiction/amwag_akma.jpg" },
-        { title: "إيكادولي", author: "حنان لاشين", category: "Fiction", image: "assets/Fiction/ekadoly.jpg" },
-        { title: "في ممر الفئران", author: "أحمد خالد توفيق", category: "Fiction", image: "assets/Fiction/fe-mmr-el-fe2ran.jpg" },
-        { title: "قواعد جارتين", author: "عمرو عبد الحميد", category: "Fiction", image: "assets/Fiction/garten_rules.jpg" },
-        { title: "هيبتا", author: "محمد صادق", category: "Fiction", image: "assets/Fiction/hebta.jpg" },
-        { title: "خوف", author: "أسامة المسلم", category: "Fiction", image: "assets/Fiction/khof.jpg" },
-        { title: "قضية لوز مر", author: "ميرنا المهدي", category: "Fiction", image: "assets/Fiction/loz-mr.jpg" },
-        { title: "قضية مخالب القط", author: "ميرنا المهدي", category: "Fiction", image: "assets/Fiction/makhaleb.jpg" },
-        { title: "مِنتو", author: "عمرو عبد الحميد", category: "Fiction", image: "assets/Fiction/minto.jpg" },
+    grid.innerHTML = '';
 
-        // Religious
-        { title: "بيوت منورة", author: "هالة سمير", category: "Religious", image: "assets/religious/buit_menwarah.jpg" },
-        { title: "إلى الله", author: "أمير منير", category: "Religious", image: "assets/religious/ela_Allah.jpg" },
-        { title: "فاتتني صلاة", author: "إسلام جمال", category: "Religious", image: "assets/religious/fatetni_salah.jpg" },
-        { title: "إلى المنكسرة قلوبهم", author: "أدهم شرقاوي", category: "Religious", image: "assets/religious/Ila_AlMunkasira_Qulubuhum.webp" },
-        { title: "كوني صحابية", author: "حنان لاشين", category: "Religious", image: "assets/religious/konie_sahabia.png" },
-        { title: "لكنود", author: "إسلام جمال", category: "Religious", image: "assets/religious/lakanood.webp" },
-        { title: "منهجية السير إلى الله", author: "د. علي أبو الحسن", category: "Religious", image: "assets/religious/Manhagiah_Alsaier_ela_Allah.webp" },
-        { title: "من الصفر", author: "ياسر ممدوح", category: "Religious", image: "assets/religious/men_alsefr.jpg" },
-        { title: "رسائل من القرآن", author: "أدهم شرقاوي", category: "Religious", image: "assets/religious/rsaael_men_AlQuran.jpg" },
-        { title: "زاد", author: "إسلام جمال", category: "Religious", image: "assets/religious/zad.webp" },
+    if (borrowedBooks.length === 0) {
+    grid.innerHTML = `<p style="color:white; grid-column: 1/-1;">Your Library is Empty.</p>`;
+    return;
+    }
 
-        // Self Help
-        { title: "Atomic Habits", author: "James Clear", category: "Self Help", image: "assets/self_help/atomic_habits.png" },
-        { title: "Deep Work", author: "Cal Newport", category: "Self Help", image: "assets/self_help/deep_work.jpg" },
-        { title: "Heal Your Inner Child", author: "Simon Chapple", category: "Self Help", image: "assets/self_help/how_to_heal_your_inner_child.jpg" },
-        { title: "Make Your Bed", author: "William H. McRaven", category: "Self Help", image: "assets/self_help/make_your_bed.jpg" },
-        { title: "Rich Dad Poor Dad", author: "Robert Kiyosaki", category: "Self Help", image: "assets/self_help/rich_dad_poor_dad.jpg" },
-        { title: "The 7 Habits", author: "Stephen R. Covey", category: "Self Help", image: "assets/self_help/the_7habits_of_highly_effictive_people.jpg" },
-        { title: "The Idiot Brain", author: "Dean Burnett", category: "Self Help", image: "assets/self_help/The_Idiot_Brain.jpg" },
-        { title: "The Power of Now", author: "Eckhart Tolle", category: "Self Help", image: "assets/self_help/the_power_of_now.jpg" },
-        { title: "The Miracle Morning", author: "Hal Elrod", category: "Self Help", image: "assets/self_help/the_miracle_morning.jpg" },
+    // الفلترة بناءً على اللي موجود في الاستعارة
+    const filteredBooks = borrowedBooks.filter(book => {
+    return filterValue === 'all' || book.category === filterValue;
+    });
 
-        // Programming & Tech
-        { title: "Clean Code", author: "Robert C. Martin", category: "Programming", image: "assets/Programming/clean-code.jpg" },
-        { title: "Data Structures", author: "Mark Allen Weiss", category: "Programming", image: "assets/Programming/ds-and-algo.webp" },
-        { title: "Computer Networking", author: "Jason Callaway", category: "Computer Science", image: "assets/cs_and_tech/network book1.jpeg" },
-        { title: "Intro. to Algorithms", author: "Thomas H. Cormen", category: "Computer Science", image: "assets/cs_and_tech/OIP (1).webp" },
-        { title: "Java Programming", author: "Joyce Farrell", category: "Programming", image: "assets/Programming/java.jpg" },
-        { title: "Python Programming", author: "Eric Matthes", category: "Programming", image: "assets/Programming/python.jpg" },
-        { title: "Google Flutter Guide", author: "Prajyot Mainkar", category: "Programming", image: "assets/Programming/flutter.jpg" },
-        { title: "AI Engineering", author: "Chip Huyen", category: "Computer Science", image: "assets/cs and tech/ai engineering.jpg" },
-        { title: "Pro MySQL NDB Cluster", author: "Jesper Wisborg Krogh", category: "Computer Science", image: "assets/cs and tech/mysql.jpg" }
-        ];
+    if (filteredBooks.length === 0) {
+    grid.innerHTML = `<p style="color:white; grid-column: 1/-1;">No books in this category.</p>`;
+    return;
+    }
 
+    filteredBooks.forEach((book, index) => {
+    const card = `
+    <div class="book-card">
+    <img src="${book.image}" alt="${book.title}">
+    <h3>${book.title}</h3>
+    <p>${book.author}</p>
+    <div class="status-label">Borrowed</div>
+    <button class="return-button" onclick="returnBook(${index})">Return Book</button>
+    </div>
+    `;
+    grid.innerHTML += card;
+    });
+    }
 
-      
- function displayBorrowedBooks(filterValue = 'all') {
- const grid = document.getElementById('booksGrid');
+    function filterBooks(category, button) {
+    document.querySelectorAll('.filter-button-shape').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    displayBorrowedBooks(category);
+    }
 
- let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
+    function returnBook(index) {
+    let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
+    if (confirm(`Do you want to return "${borrowedBooks[index].title}"?`)) {
+    borrowedBooks.splice(index, 1);
+    localStorage.setItem('myLibrary', JSON.stringify(borrowedBooks));
+    displayBorrowedBooks('all');
+    }
+    }
 
- grid.innerHTML = '';
-
- if (borrowedBooks.length === 0) {
- grid.innerHTML = `<p class="empty-msg">Your Library is Empty .</p>`;
- return;
-        }
-
- const filteredBooks = borrowedBooks.filter(book => {
- return filterValue === 'all' || book.category === filterValue;
-        });
-
- if (filteredBooks.length === 0) {
- grid.innerHTML = `<p class="empty-msg">There is no books borrowed in ${filterValue} category.</p>`;
- return;
-        }
-
- filteredBooks.forEach((book, index) => {
- const card = `
- <div class="book-card">
- <img src="${book.image}" alt="${book.title}">
- <h3>${book.title}</h3>
- <p>بواسطة ${book.author}</p>
- <div class="status-label">Borrowed</div>
- <button class="return-button" onclick="returnBook(${index})">Return Book</button>
- </div>
-        `;
-grid.innerHTML += card;
- });
-        }
-
-  function filterBooks(category, button) {
-  document.querySelectorAll('.filter-button-shape').forEach(btn => btn.classList.remove('active'));
- button.classList.add('active');
-
- displayBorrowedBooks(category);
-        }
- function returnBook(index) {
- let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
-
-if (confirm(`هل تريد إرجاع "${borrowedBooks[index].title}"؟`)) {
-borrowedBooks.splice(index, 1);
-localStorage.setItem('myLibrary', JSON.stringify(borrowedBooks));
-
-const activeFilter = document.querySelector('.filter-button-shape.active').innerText;
-displayBorrowedBooks('all');
-        }
-        }
-
-window.onload = () => displayBorrowedBooks('all');
-    </script>
-   
+    window.onload = () => displayBorrowedBooks('all');
+</script>
 </body>
 </html>
