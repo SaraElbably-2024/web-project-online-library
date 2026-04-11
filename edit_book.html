@@ -1,103 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="style add & edit book.css">
+</head>
+<body>
 
-var books = [
-    { id: "101", name: "Introduction to AI", author: "Alan Turing", category: "Technology", description: "Basics of Artificial Intelligence" },
-    { id: "102", name: "Data Structures", author: "John Doe", category: "Science", description: "Learn trees and graphs" }
-];
+    <nav>
+        <a href="admin_book_list.html">Books</a> |
+        <a href="admin_profile.html">Profile</a> |
+        <a href="index.html">Log out</a>
+    </nav>
 
+    <div class="container">
+        <h2 id="form-title">Find Book to Edit</h2>
+        
+        <form id="search_form">
+            <label>Enter Book ID or Name</label>
+            <input type="text" name="search_query" id="search_query">
+            <span class="error-msg" id="search_query_err"></span>
+            
+            <input type="submit" value="Search">
+        </form>
 
-function searchBook() {
-    var q = document.getElementById('search_query').value;
-    var queryLower = q.toLowerCase(); 
-    
-    document.getElementById('search_query_err').innerHTML = "";
+        <br/>
+        
 
-    if (q === "") {
-        document.getElementById('search_query_err').innerHTML = "* Please enter a Book ID or name.";
-        return false;
-    }
+        <h2 id="form-title">Edit Book</h2>
+        
+        <form id="edit_form">
+            <label>Book ID</label>
+            <input type="text" name="edit_book_id" id="edit_book_id" readonly>
 
-    var foundBook = null;
+            <label>Book Name</label>
+            <input type="text" name="edit_book_name" id="edit_book_name" maxlength="100">
+            <span class="error-msg" id="edit_book_name_err"></span>
 
-    
-    for (var i = 0; i < books.length; i++) {
-        var bookIdLower = books[i].id.toLowerCase();
-        var bookNameLower = books[i].name.toLowerCase();
+            <label>Author Name</label>
+            <input type="text" name="edit_author_name" id="edit_author_name" maxlength="50">
+            <span class="error-msg" id="edit_author_name_err"></span>
 
+            <label>Category</label>
+            <select name="edit_category" id="edit_category">
+                <option value="Technology">Technology</option>
+                <option value="Science">Science</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Fiction">Fiction</option>
+                <option value="Romance">Romance</option>
+                <option value="History">History</option>
+                <option value="Others">Others</option>
+            </select>
 
-        if (bookIdLower === queryLower || bookNameLower.indexOf(queryLower) !== -1) {
-            foundBook = books[i];
-            break;
-        }
-    }
+            <label>Description</label>
+            <textarea rows="5" name="descri" id="edit_descri"></textarea>
 
-    if (foundBook === null) {
-        document.getElementById('search_query_err').innerHTML = "* No book found.";
-    } else {
-    
-        document.getElementById('edit_book_id').value = foundBook.id;
-        document.getElementById('edit_book_name').value = foundBook.name;
-        document.getElementById('edit_author_name').value = foundBook.author;
-        document.getElementById('edit_category').value = foundBook.category;
-        document.getElementById('edit_descri').value = foundBook.description;
-    }
+            <input type="submit" value="Update Book">
+            <span class="success-msg" id="success_msg"></span>
+        </form>
+    </div>
 
-    return false; 
-}
-
-
-function updateBook() {
-    var id = document.getElementById('edit_book_id').value;
-    var name = document.getElementById('edit_book_name').value;
-    var author = document.getElementById('edit_author_name').value;
-    var cat = document.getElementById('edit_category').value;
-    var descri = document.getElementById('edit_descri').value;
-
-    document.getElementById('edit_book_name_err').innerHTML = "";
-    document.getElementById('edit_author_name_err').innerHTML = "";
-    document.getElementById('success_msg').innerHTML = "";
-
-    var isValid = true;
-
-    if (id === "") {
-        alert("Search for a book first.");
-        return false;
-    }
-
-    if (name === "") {
-        document.getElementById('edit_book_name_err').innerHTML = "* Book name is required.";
-        isValid = false;
-    } else {
-
-        for (var i = 0; i < books.length; i++) {
-            if (books[i].name.toLowerCase() === name.toLowerCase() && books[i].id !== id) {
-                document.getElementById('edit_book_name_err').innerHTML = "* This name already exists.";
-                isValid = false;
-                break;
-            }
-        }
-    }
-
-    if (author === "") {
-        document.getElementById('edit_author_name_err').innerHTML = "* Author is required.";
-        isValid = false;
-    }
-
-    
-    if (isValid === true) {
-
-        for (var j = 0; j < books.length; j++) {
-            if (books[j].id === id) {
-                books[j].name = name;
-                books[j].author = author;
-                books[j].category = cat;
-                books[j].description = descri;
-                break;
-            }
-        }
-
-        document.getElementById('success_msg').innerHTML = "Book updated successfully!";
-        document.getElementById('success_msg').style.color = "green";
-    }
-
-    return false; 
-}
+    <script src="edit_book.js"></script>
+</body>
+</html>
