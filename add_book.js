@@ -21,12 +21,12 @@ document.getElementById('add_form').addEventListener('submit', function(e) {
     var isValid = true;
 
     if (id === "") {
-        document.getElementById('book_id_err').innerHTML = "* Book ID is required.";
+        document.getElementById('book_id_err').innerHTML = " Book ID is required.";
         isValid = false;
     } else {
         for (var i = 0; i < books.length; i++) {
             if (books[i].id === id) {
-                document.getElementById('book_id_err').innerHTML = "* This ID already exists.";
+                document.getElementById('book_id_err').innerHTML = " ID is  exists.";
                 isValid = false;
                 break;
             }
@@ -34,17 +34,17 @@ document.getElementById('add_form').addEventListener('submit', function(e) {
     }
 
     if (name === "") {
-        document.getElementById('book_name_err').innerHTML = "* Book name is required.";
+        document.getElementById('book_name_err').innerHTML = "  Book name is required.";
         isValid = false;
     }
 
     if (author === "") {
-        document.getElementById('author_err').innerHTML = "* Author is required.";
+        document.getElementById('author_err').innerHTML = " Author is required.";
         isValid = false;
     }
 
     if (category === "") {
-        document.getElementById('category_err').innerHTML = "* Please select a category.";
+        document.getElementById('category_err').innerHTML = " Please select a category.";
         isValid = false;
     }
 
