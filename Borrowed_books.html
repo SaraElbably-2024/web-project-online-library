@@ -1,16 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Library | Lumina</title>
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Library | Lumina</title>
+<style>
 :root {
- --dark-blue: #194569;
+--dark-blue: #194569;
 --medium-blue: #5F84A2;
 --soft-blue: #91AEC4;
 --white: #ffffff;
---pale-blue-transparent: rgba(219, 236, 244, 0.94)}
+--pale-blue-transparent: rgba(219, 236, 244, 0.94);
+        }
 
 body {
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,13 +21,26 @@ min-height: 100vh;
 color: var(--dark-blue);
 background-image: url('borrowedbook-background.jpg');
 background-size: cover;
-background-repeat: no-repeat;
 background-attachment: fixed;
-overflow-x: scroll;
         }
 
-       
-/* Container*/
+nav {
+background: var(--dark-blue);
+padding: 1rem;
+text-align: center;
+        }
+
+.nav-links a {
+color: white;
+text-decoration: none;
+margin: 0 15px;
+font-weight: bold;
+        }
+
+.nav-links a.active {
+border-bottom: 2px solid var(--soft-blue);
+            }
+
 .container {
 max-width: 1200px;
 margin: 40px auto;
@@ -35,122 +49,85 @@ background: rgba(255, 255, 255, 0.15);
 backdrop-filter: blur(10px);
 border-radius: 30px;
 text-align: center;
-box-shadow: 0 15px 35px black;}
+box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
 
-h1 {
-color: white;
-text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
-margin-bottom: 30px;
-font-size: 2.2rem;}
-
-/* filter buttons */
+        /* Buttons Styling */
+.filter-button-place {
+margin-bottom: 35px;
+display: flex;
+justify-content: center;
+gap: 10px;
+flex-wrap: wrap;
+        }
 
 .filter-button-shape {
-padding: 12px 28px;
+padding: 12px 25px;
 border: none;
 border-radius: 25px;
 background: var(--dark-blue);
 color: white;
 cursor: pointer;
-transition: all 0.3s ease;
+transition: 0.3s;
 font-weight: 600;
-font-size: 0.95rem;
-box-shadow: 0 4px 6px black;}
+        }
 
-.filter-button-place {
-margin-bottom: 35px;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 10px;}
-
-.filter-button:hover, .filter-button.active {
+.filter-button-shape.active, .filter-button-shape:hover {
 background: var(--medium-blue);
-transform: translateY(-3px);
-box-shadow: 0 6px 12px black; }
+transform: translateY(-2px);
+            }
 
-/* التوزيعه */
 .books-grid {
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
 gap: 30px;
-animation: fadein 0.8s ease;}
-
-@keyframes fadein {
-from {
-opacity: 0;
-transform: translateY(20px);}
-to {
-opacity: 1;
-transform: translateY(0);}}
+        }
 
 .book-card {
 background: var(--pale-blue-transparent);
-width: 230px;
-padding: 25px;
+width: 220px;
+padding: 20px;
 border-radius: 20px;
-box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-transition: 0.3s;
+transition: 0.4s;
 display: flex;
 flex-direction: column;
 align-items: center;
-border: 1px solid rgba(255,255,255,0.3);}
+        }
 
 .book-card:hover {
 transform: translateY(-10px);
 background: white;
-box-shadow: 0 15px 35px rgba(0,0,0,0.25);}
+            }
 
 .book-card img {
-width: 170px;
-height: 250px;
+width: 160px;
+height: 230px;
 object-fit: cover;
 border-radius: 10px;
-box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-margin-bottom: 20px;
-}
+margin-bottom: 15px;
+            }
 
 .book-card h3 {
-font-size: 1.15rem;
-margin: 10px 0 5px;
-height: 50px;
+font-size: 1rem;
+margin: 10px 0;
+height: 45px;
 overflow: hidden;
-color: var(--dark-blue);
-}
+            }
 
-.book-card p {
-font-size: 0.95rem;
-color: var(--medium-blue);
-margin-bottom: 20px;
-font-style: italic;
-}
-
-/* هل متاح ولا لا و زرار الارجع و  */
 .status-label {
-font-weight: bold;
-font-size: 0.85rem;
-margin-bottom: 20px;
-padding: 6px 15px;
+font-size: 0.8rem;
+padding: 5px 15px;
 border-radius: 15px;
-letter-spacing: 0.5px;
-}
-
-.unavailable {
-background: #5F84A2;
-color: white;
-border: 1px solid black;
-}
-
-.available {
-background: #91AEC4;
-color: #3c763d;
-border: 1px solid #d6e9c6;
-}
+margin-bottom: 15px;
+background: #ffcccc;
+color: #cc0000;
+font-weight: bold;
+        }
 
 .return-button {
 width: 100%;
-padding: 12px;
+padding: 10px;
 border: none;
 border-radius: 10px;
 background: var(--dark-blue);
@@ -158,363 +135,147 @@ color: white;
 font-weight: bold;
 cursor: pointer;
 transition: 0.3s;
-font-size: 1rem;
-}
+        }
 
 .return-button:hover {
-background: #91AEC4;
-transform: scale(1.03);
-}
+background: #d9534f;
+            }
 </style>
 </head>
 <body>
 
- <nav>  
+<nav>
 <div class="nav-links">
- <a href="index.html">Home</a>
+<a href="index.html">Home</a>
 <a href="user_book_list.html">Books List</a>
 <a href="Borrowed_books.html" class="active">My Library</a>
 <a href="search.html">Search</a>
- <a href="index.html" class="logout-btn">Log out</a>
+        </div>
+    </nav>
+
+<div class="container">
+<h1 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">My Borrowed Collection</h1>
+
+<div class="filter-button-place">
+<button class="filter-button-shape active" onclick="filterBooks('all', this)">All Books</button>
+<button class="filter-button-shape" onclick="filterBooks('Computer Science', this)">CS & Tech</button>
+<button class="filter-button-shape" onclick="filterBooks('Programming', this)">Programming</button>
+<button class="filter-button-shape" onclick="filterBooks('Fiction', this)">Fiction</button>
+<button class="filter-button-shape" onclick="filterBooks('Religious', this)">Religious</button>
+<button class="filter-button-shape" onclick="filterBooks('Self Help', this)">Self Help</button>
 </div>
-</nav>
 
- <div class="container">
-     <h1>My Borrowed Collection</h1>
+<div class="books-grid" id="booksGrid">
+</div>
+</div>
 
-     <div class="filter-button-place">
-         <button class="filter-button-shape active" onclick="filterBooks('all', this)">All Books</button>
-         <button class="filter-button-shape" onclick="filterBooks('Computer Science', this)">CS & Tech</button>
-         <button class="filter-button-shape" onclick="filterBooks('Fiction', this)">Fiction</button>
+<script>
 
-         <button class="filter-button-shape " onclick="filterBooks('Programming', this)">Programming</button>
-         <button class="filter-button-shape " onclick="filterBooks('Psychology', this)">Psychology</button>
-         <button class="filter-button-shape " onclick="filterBooks('Religious', this)">Religious</button>
-         <button class="filter-button-shape " onclick="filterBooks('Self Help', this)">Self Help</button>
-       
+        let myBooks = [
+        // Fiction
+        { title: "قضية عنب الثعلب", author: "ميرنا المهدي", category: "Fiction", image: "assets/Fiction/3enab-el-tha3lab.jpg" },
+        { title: "أبادول", author: "حنان لاشين", category: "Fiction", image: "assets/Fiction/abadol.jpg" },
+        { title: "أمواج أكما", author: "عمرو عبد الحميد", category: "Fiction", image: "assets/Fiction/amwag_akma.jpg" },
+        { title: "إيكادولي", author: "حنان لاشين", category: "Fiction", image: "assets/Fiction/ekadoly.jpg" },
+        { title: "في ممر الفئران", author: "أحمد خالد توفيق", category: "Fiction", image: "assets/Fiction/fe-mmr-el-fe2ran.jpg" },
+        { title: "قواعد جارتين", author: "عمرو عبد الحميد", category: "Fiction", image: "assets/Fiction/garten_rules.jpg" },
+        { title: "هيبتا", author: "محمد صادق", category: "Fiction", image: "assets/Fiction/hebta.jpg" },
+        { title: "خوف", author: "أسامة المسلم", category: "Fiction", image: "assets/Fiction/khof.jpg" },
+        { title: "قضية لوز مر", author: "ميرنا المهدي", category: "Fiction", image: "assets/Fiction/loz-mr.jpg" },
+        { title: "قضية مخالب القط", author: "ميرنا المهدي", category: "Fiction", image: "assets/Fiction/makhaleb.jpg" },
+        { title: "مِنتو", author: "عمرو عبد الحميد", category: "Fiction", image: "assets/Fiction/minto.jpg" },
 
-     </div>
+        // Religious
+        { title: "بيوت منورة", author: "هالة سمير", category: "Religious", image: "assets/religious/buit_menwarah.jpg" },
+        { title: "إلى الله", author: "أمير منير", category: "Religious", image: "assets/religious/ela_Allah.jpg" },
+        { title: "فاتتني صلاة", author: "إسلام جمال", category: "Religious", image: "assets/religious/fatetni_salah.jpg" },
+        { title: "إلى المنكسرة قلوبهم", author: "أدهم شرقاوي", category: "Religious", image: "assets/religious/Ila_AlMunkasira_Qulubuhum.webp" },
+        { title: "كوني صحابية", author: "حنان لاشين", category: "Religious", image: "assets/religious/konie_sahabia.png" },
+        { title: "لكنود", author: "إسلام جمال", category: "Religious", image: "assets/religious/lakanood.webp" },
+        { title: "منهجية السير إلى الله", author: "د. علي أبو الحسن", category: "Religious", image: "assets/religious/Manhagiah_Alsaier_ela_Allah.webp" },
+        { title: "من الصفر", author: "ياسر ممدوح", category: "Religious", image: "assets/religious/men_alsefr.jpg" },
+        { title: "رسائل من القرآن", author: "أدهم شرقاوي", category: "Religious", image: "assets/religious/rsaael_men_AlQuran.jpg" },
+        { title: "زاد", author: "إسلام جمال", category: "Religious", image: "assets/religious/zad.webp" },
 
-     <div class="books-grid" id="booksGrid">
+        // Self Help
+        { title: "Atomic Habits", author: "James Clear", category: "Self Help", image: "assets/self_help/atomic_habits.png" },
+        { title: "Deep Work", author: "Cal Newport", category: "Self Help", image: "assets/self_help/deep_work.jpg" },
+        { title: "Heal Your Inner Child", author: "Simon Chapple", category: "Self Help", image: "assets/self_help/how_to_heal_your_inner_child.jpg" },
+        { title: "Make Your Bed", author: "William H. McRaven", category: "Self Help", image: "assets/self_help/make_your_bed.jpg" },
+        { title: "Rich Dad Poor Dad", author: "Robert Kiyosaki", category: "Self Help", image: "assets/self_help/rich_dad_poor_dad.jpg" },
+        { title: "The 7 Habits", author: "Stephen R. Covey", category: "Self Help", image: "assets/self_help/the_7habits_of_highly_effictive_people.jpg" },
+        { title: "The Idiot Brain", author: "Dean Burnett", category: "Self Help", image: "assets/self_help/The_Idiot_Brain.jpg" },
+        { title: "The Power of Now", author: "Eckhart Tolle", category: "Self Help", image: "assets/self_help/the_power_of_now.jpg" },
+        { title: "The Miracle Morning", author: "Hal Elrod", category: "Self Help", image: "assets/self_help/the_miracle_morning.jpg" },
 
-         <div class="book-card" data-category="Fiction">
-             <img src="assets/Fiction/3enab-el-tha3lab.jpg" alt="قضية عنب الثعلب">
-             <h3>قضية عنب الثعلب</h3>
-             <p>بواسطة ميرنا المهدي</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Fiction">
-             <img src="assets/Fiction/abadol.jpg" alt="أبادول">
-             <h3>أبادول</h3>
-             <p>بواسطة حنان لاشين</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Fiction">
-             <img src="assets/Fiction/amwag_akma.jpg" alt="أمواج أكما">
-             <h3>أمواج أكما</h3>
-             <p>بواسطة عمرو عبد الحميد</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Fiction">
-             <img src="assets/Fiction/ekadoly.jpg" alt="إيكادولي">
-             <h3>إيكادولي</h3>
-             <p>بواسطة حنان لاشين</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Fiction">
-             <img src="assets/Fiction/fe-mmr-el-fe2ran.jpg" alt="في ممر الفئران">
-             <h3>في ممر الفئران</h3>
-             <p>بواسطة أحمد خالد توفيق</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Fiction">
-             <img src="assets/Fiction/garten_rules.jpg" alt="قواعد جارتين">
-             <h3>قواعد جارتين</h3>
-             <p>بواسطة عمرو عبد الحميد</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Fiction">
-             <img src="assets/Fiction/hebta.jpg" alt="هيبتا">
-             <h3>هيبتا</h3>
-             <p>بواسطة محمد صادق</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Fiction">
-             <img src="assets/Fiction/khof.jpg" alt="خوف">
-             <h3>خوف</h3>
-             <p>بواسطة أسامة المسلم</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Fiction">
-             <img src="assets/Fiction/loz-mr.jpg" alt="قضية لوز مر">
-             <h3>قضية لوز مر</h3>
-             <p>بواسطة ميرنا المهدي</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Fiction">
-             <img src="assets/Fiction/makhaleb.jpg" alt="قضية مخالب القط">
-             <h3>قضية مخالب القط</h3>
-             <p>بواسطة ميرنا المهدي</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Fiction">
-             <img src="assets/Fiction/minto.jpg" alt="مِنتو">
-             <h3>مِنتو</h3>
-             <p>بواسطة عمرو عبد الحميد</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
+        // Programming & Tech
+        { title: "Clean Code", author: "Robert C. Martin", category: "Programming", image: "assets/Programming/clean-code.jpg" },
+        { title: "Data Structures", author: "Mark Allen Weiss", category: "Programming", image: "assets/Programming/ds-and-algo.webp" },
+        { title: "Computer Networking", author: "Jason Callaway", category: "Computer Science", image: "assets/cs_and_tech/network book1.jpeg" },
+        { title: "Intro. to Algorithms", author: "Thomas H. Cormen", category: "Computer Science", image: "assets/cs_and_tech/OIP (1).webp" },
+        { title: "Java Programming", author: "Joyce Farrell", category: "Programming", image: "assets/Programming/java.jpg" },
+        { title: "Python Programming", author: "Eric Matthes", category: "Programming", image: "assets/Programming/python.jpg" },
+        { title: "Google Flutter Guide", author: "Prajyot Mainkar", category: "Programming", image: "assets/Programming/flutter.jpg" },
+        { title: "AI Engineering", author: "Chip Huyen", category: "Computer Science", image: "assets/cs and tech/ai engineering.jpg" },
+        { title: "Pro MySQL NDB Cluster", author: "Jesper Wisborg Krogh", category: "Computer Science", image: "assets/cs and tech/mysql.jpg" }
+        ];
 
-         <div class="book-card" data-category="Religious">
-             <img src="assets/religious/buit_menwarah.jpg" alt="بيوت منورة">
-             <h3>بيوت منورة</h3>
-             <p>بواسطة هالة سمير</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Religious">
-             <img src="assets/religious/ela_Allah.jpg" alt="إلى الله">
-             <h3>إلى الله</h3>
-             <p>بواسطة أمير منير</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Religious">
-             <img src="assets/religious/fatetni_salah.jpg" alt="فاتتني صلاة">
-             <h3>فاتتني صلاة</h3>
-             <p>بواسطة إسلام جمال</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Religious">
-             <img src="assets/religious/Ila_AlMunkasira_Qulubuhum.webp" alt="إلى المنكسرة قلوبهم">
-             <h3>إلى المنكسرة قلوبهم</h3>
-             <p>بواسطة أدهم شرقاوي</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Religious">
-             <img src="assets/religious/konie_sahabia.png" alt="كوني صحابية">
-             <h3>كوني صحابية</h3>
-             <p>بواسطة حنان لاشين</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Religious">
-             <img src="assets/religious/lakanood.webp" alt="لكنود">
-             <h3>لكنود</h3>
-             <p>بواسطة إسلام جمال</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Religious">
-             <img src="assets/religious/Manhagiah_Alsaier_ela_Allah.webp" alt="منهجية السير إلى الله">
-             <h3>منهجية السير إلى الله</h3>
-             <p>بواسطة د. علي أبو الحسن</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Religious">
-             <img src="assets/religious/men_alsefr.jpg" alt="من الصفر">
-             <h3>من الصفر</h3>
-             <p>بواسطة ياسر ممدوح</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Religious">
-             <img src="assets/religious/rsaael_men_AlQuran.jpg" alt="رسائل من القرآن">
-             <h3>رسائل من القرآن</h3>
-             <p>بواسطة أدهم شرقاوي</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Religious">
-             <img src="assets/religious/zad.webp" alt="زاد">
-             <h3>زاد</h3>
-             <p>بواسطة إسلام جمال</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
 
-         <div class="book-card" data-category="Self Help">
-             <img src="assets/self_help/atomic_habits.png" alt="Atomic Habits">
-             <h3>Atomic Habits</h3>
-             <p>by James Clear</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Self Help">
-             <img src="assets/self_help/deep_work.jpg" alt="Deep Work">
-             <h3>Deep Work</h3>
-             <p>by Cal Newport</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Self Help">
-             <img src="assets/self_help/how_to_heal_your_inner_child.jpg" alt="Heal Your Inner Child">
-             <h3>Heal Your Inner Child</h3>
-             <p>by Simon Chapple</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Self Help">
-             <img src="assets/self_help/make_your_bed.jpg" alt="Make Your Bed">
-             <h3>Make Your Bed</h3>
-             <p>by William H. McRaven</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Self Help">
-             <img src="assets/self_help/rich_dad_poor_dad.jpg" alt="Rich Dad Poor Dad">
-             <h3>Rich Dad Poor Dad</h3>
-             <p>by Robert Kiyosaki</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Self Help">
-             <img src="assets/self_help/the_7habits_of_highly_effictive_people.jpg" alt="7 Habits">
-             <h3>The 7 Habits</h3>
-             <p>by Stephen R. Covey</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Self Help">
-             <img src="assets/self_help/The_Idiot_Brain.jpg" alt="The Idiot Brain">
-             <h3>The Idiot Brain</h3>
-             <p>by Dean Burnett</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Self Help">
-             <img src="assets/self_help/the_power_of_now.jpg" alt="The Power of Now">
-             <h3>The Power of Now</h3>
-             <p>by Eckhart Tolle</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Self Help">
-             <img src="assets/self_help/the_miracle_morning.jpg" alt="The Miracle Morning">
-             <h3>The Miracle Morning</h3>
-             <p>by Hal Elrod</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-
-         <div class="book-card" data-category="Programming">
-             <img src="assets/Programming/clean-code.jpg" alt="Clean Code">
-             <h3>Clean Code</h3>
-             <p>by Robert C. Martin</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="Programming">
-             <img src="assets/Programming/ds-and-algo.webp" alt="Data Structures">
-             <h3>Data Structures</h3>
-             <p>by Mark Allen Weiss</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="CS & Tec">
-             <img src="assets/cs_and_tech/network book1.jpeg" alt="Computer Networking">
-             <h3>Computer Networking</h3>
-             <p>by Jason Callaway</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-         <div class="book-card" data-category="CS & Tec">
-             <img src="assets/cs_and_tech/OIP (1).webp" alt="Algorithms">
-             <h3>Intro. to Algorithms</h3>
-             <p>by Thomas H. Cormen</p>
-             <div class="status-label unavailable">Borrowed</div>
-             <button class="return-button" onclick="returnBook(this)">Return Book</button>
-         </div>
-
-     </div>
-
- </div>
-
-    <script>
       
-        function loadBorrowedBooks() {
-        const booksGrid = document.getElementById('booksGrid');
+ function displayBorrowedBooks(filterValue = 'all') {
+ const grid = document.getElementById('booksGrid');
 
-       
-        let borrowedBooks = JSON.parse(localStorage.getItem('myBorrowedBooks')) || [];
+ let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
 
-        booksGrid.innerHTML = '';
+ grid.innerHTML = '';
 
-        if (borrowedBooks.length === 0) {
-        booksGrid.innerHTML = "<h2 style='color: white; width: 100%;'>Your library is empty.</h2>";
-        return;
+ if (borrowedBooks.length === 0) {
+ grid.innerHTML = `<p class="empty-msg">Your Library is Empty .</p>`;
+ return;
         }
 
-       
-        borrowedBooks.forEach((book, index) => {
-        const card = document.createElement('div');
-        card.className = 'book-card';
-        card.setAttribute('data-category', book.category);
-        card.innerHTML = `
-        <img src="${book.image}" alt="${book.title}">
-        <h3>${book.title}</h3>
-        <p>by ${book.author}</p>
-        <div class="status-label unavailable">Borrowed</div>
-        <button class="return-button" onclick="returnBook(${index}, this)">Return Book</button>
+ const filteredBooks = borrowedBooks.filter(book => {
+ return filterValue === 'all' || book.category === filterValue;
+        });
+
+ if (filteredBooks.length === 0) {
+ grid.innerHTML = `<p class="empty-msg">There is no books borrowed in ${filterValue} category.</p>`;
+ return;
+        }
+
+ filteredBooks.forEach((book, index) => {
+ const card = `
+ <div class="book-card">
+ <img src="${book.image}" alt="${book.title}">
+ <h3>${book.title}</h3>
+ <p>بواسطة ${book.author}</p>
+ <div class="status-label">Borrowed</div>
+ <button class="return-button" onclick="returnBook(${index})">Return Book</button>
+ </div>
         `;
-        booksGrid.appendChild(card);
-        });
+grid.innerHTML += card;
+ });
         }
 
-        
-        function returnBook(index, button) {
-        let borrowedBooks = JSON.parse(localStorage.getItem('myBorrowedBooks')) || [];
-        const title = borrowedBooks[index].title;
+  function filterBooks(category, button) {
+  document.querySelectorAll('.filter-button-shape').forEach(btn => btn.classList.remove('active'));
+ button.classList.add('active');
 
-        if (confirm(`Are you sure you want to return "${title}"?`)) {
-        const card = button.parentElement;
+ displayBorrowedBooks(category);
+        }
+ function returnBook(index) {
+ let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
 
-        // تأثير اختفاء (Animation)
-        card.style.transition = "all 0.5s ease";
-        card.style.opacity = "0";
-        card.style.transform = "scale(0.8)";
+if (confirm(`هل تريد إرجاع "${borrowedBooks[index].title}"؟`)) {
+borrowedBooks.splice(index, 1);
+localStorage.setItem('myLibrary', JSON.stringify(borrowedBooks));
 
-        setTimeout(() => {
-       
-        borrowedBooks.splice(index, 1);
-       
-        localStorage.setItem('myBorrowedBooks', JSON.stringify(borrowedBooks));
-       
-        loadBorrowedBooks();
-        }, 500);
+const activeFilter = document.querySelector('.filter-button-shape.active').innerText;
+displayBorrowedBooks('all');
         }
         }
 
-        
-        function filterBooks(category, button) {
-        const buttons = document.querySelectorAll('.filter-button-shape');
-        buttons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        const cards = document.querySelectorAll('.book-card');
-        cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
-        card.style.display = 'flex';
-        } else {
-        card.style.display = 'none';
-        }
-        });
-        }
-
-        window.onload = loadBorrowedBooks;
+window.onload = () => displayBorrowedBooks('all');
     </script>
    
 </body>
