@@ -5,224 +5,209 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Details | Lumina</title>
     <style>
-        :root {
-            --dark-blue: #194569;
-            --medium-blue: #5F84A2;
-            --soft-blue: #91AEC4;
-            --white: #ffffff;
-            --pale-blue: rgba(219, 236, 244, 0.94);
-        }
+:root {
+--dark-blue: #194569;
+--medium-blue: #5F84A2;
+--soft-blue: #91AEC4;
+--white: #ffffff;
+--pale-blue: rgba(219, 236, 244, 0.94);
+}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            color: var(--dark-blue);
-            background-image: url('borrowedbook-background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-blend-mode: overlay;
-            overflow-x: hidden;
-        }
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+margin: 0;
+padding: 0;
+min-height: 100vh;
+color: var(--dark-blue);
+background-image: url('borrowedbook-background.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-blend-mode: overlay;
+overflow-x: hidden;
+}
 
         /* Animations */
-        @keyframes slideFromLeft {
-            0% {
-                opacity: 0;
-                transform: translateX(-60px) rotateY(-10deg);
+@keyframes slideFromLeft {
+0% {
+opacity: 0;
+transform: translateX(-60px) rotateY(-10deg);
+}
+100% {
+opacity: 1;
+transform: translateX(0) rotateY(-22deg);
+}
+}
+
+@keyframes slideFromRight {
+0% {
+opacity: 0;
+transform: translateX(60px);
+}
+
+100% {
+opacity: 1;
+transform: translateX(0);
+}
+        }
+
+@keyframes slideFromBottom {
+0% {
+opacity: 0;
+transform: translateY(30px);
             }
 
-            100% {
-                opacity: 1;
-                transform: translateX(0) rotateY(-22deg);
-            }
+100% {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+nav {
+background: var(--dark-blue);
+padding: 1rem;
+text-align: center;
         }
 
-        @keyframes slideFromRight {
-            0% {
-                opacity: 0;
-                transform: translateX(60px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
+.nav-links a {
+color: white;
+text-decoration: none;
+margin: 0 15px;
+font-weight: bold;
         }
 
-        @keyframes slideFromBottom {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+.container {
+max-width: 1000px;
+margin: 30px auto;
+padding: 20px;
         }
 
-        nav {
-            background: var(--dark-blue);
-            padding: 1rem;
-            text-align: center;
+.book-details-main {
+display: flex;
+background: var(--pale-blue);
+border-radius: 15px;
+overflow: hidden;
+box-shadow: 0 20px 45px black;
+transition: opacity 0.3s ease;
+}
+
+.book-cover-part {
+flex: 1;
+background: rgba(25, 69, 105, 0.1);
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 35px;
+perspective: 1000px;
+animation: slideFromLeft 0.5s ease-out;
         }
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
+.book-cover-part img {
+width: 260px;
+height: 380px;
+object-fit: cover;
+border-radius: 5px 15px 15px 5px;
+transform: rotateY(-20deg) rotateX(4deg);
+transition: transform 0.3s linear;
+cursor: pointer;}
+
+.book-cover-part:hover img {
+transform: rotateY(0deg) rotateX(0deg) scale(1.05);}
+
+.book-info-part {
+flex: 1.5;
+padding: 35px;
+display: flex;
+flex-direction: column;
+animation: slideFromRight 0.7s ease-out;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 20px;
-        }
+.description-box {
+background: rgba(255, 255, 255, 0.6);
+padding: 15px;
+border-radius: 12px;
+border-left: 5px solid var(--medium-blue);
+margin: 15px 0;
+font-size: 0.92rem;
+line-height: 1.5;}
 
-        .book-details-main {
-            display: flex;
-            background: var(--pale-blue);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 45px black;
-            transition: opacity 0.3s ease;
-        }
+.details-book {
+display: grid;
+grid-template-columns: 1fr;
+gap: 12px;
+margin-bottom: 25px;
+background: rgba(255, 255, 255, 0.3);
+padding: 15px;
+border-radius: 12px;}
 
-        .book-cover-part {
-            flex: 1;
-            background: rgba(25, 69, 105, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 35px;
-            perspective: 1000px;
-            animation: slideFromLeft 0.5s ease-out;
-        }
+.action-buttons {
+display: flex;
+gap: 10px;}
 
-            .book-cover-part img {
-                width: 260px;
-                height: 380px;
-                object-fit: cover;
-                border-radius: 5px 15px 15px 5px;
-                transform: rotateY(-20deg) rotateX(4deg);
-                transition: transform 0.3s linear;
-                cursor: pointer;
-            }
+button {
+padding: 14px;
+border-radius: 10px;
+border: none;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.3s ease;}
 
-            .book-cover-part:hover img {
-                transform: rotateY(0deg) rotateX(0deg) scale(1.05);
-            }
+.borrow-button {
+background: var(--dark-blue);
+color: white;
+flex: 2;}
 
-        .book-info-part {
-            flex: 1.5;
-            padding: 35px;
-            display: flex;
-            flex-direction: column;
-            animation: slideFromRight 0.7s ease-out;
-        }
+.borrow-button:hover {
+background: #123450;
+transform: translateY(-3px);
+box-shadow: 0 5px 15px black;}
 
-        .description-box {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 15px;
-            border-radius: 12px;
-            border-left: 5px solid var(--medium-blue);
-            margin: 15px 0;
-            font-size: 0.92rem;
-            line-height: 1.5;
-        }
+.back-button {
+background: rgba(0,0,0,0.08);
+color: var(--dark-blue);
+flex: 1;
+}
 
-        .details-book {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin-bottom: 25px;
-            background: rgba(255, 255, 255, 0.3);
-            padding: 15px;
-            border-radius: 12px;
-        }
+.back-button:hover {
+background: var(--soft-blue);
+color: white;
+transform: translateY(-3px);}
 
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-        }
+.suggestions {
+margin-top: 40px;
+animation: slideFromBottom 0.8s ease-out;}
 
-        button {
-            padding: 14px;
-            border-radius: 10px;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+.suggestions h3 {
+color: white;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.4);}
 
-        .borrow-button {
-            background: var(--dark-blue);
-            color: white;
-            flex: 2;
-        }
+.suggestion-grid {
+display: flex;
+gap: 15px;
+overflow-x: auto;
+padding: 10px 0;}
 
-            .borrow-button:hover {
-                background: #123450;
-                transform: translateY(-3px);
-                box-shadow: 0 5px 15px black;
-            }
+.suggestion-book {
+min-width: 150px;
+background: var(--pale-blue);
+padding: 12px;
+border-radius: 18px;
+text-align: center;
+cursor: pointer;
+transition: 0.3s;}
 
-        .back-button {
-            background: rgba(0,0,0,0.08);
-            color: var(--dark-blue);
-            flex: 1;
-        }
+.suggestion-book img {
+width: 130px;
+height: 185px;
+object-fit: cover;
+border-radius: 8px;
+margin-bottom: 8px;
+}
 
-            .back-button:hover {
-                background: var(--soft-blue);
-                color: white;
-                transform: translateY(-3px);
-            }
-
-        .suggestions {
-            margin-top: 40px;
-            animation: slideFromBottom 0.8s ease-out;
-        }
-
-            .suggestions h3 {
-                color: white;
-                text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-            }
-
-        .suggestion-grid {
-            display: flex;
-            gap: 15px;
-            overflow-x: auto;
-            padding: 10px 0;
-        }
-
-        .suggestion-book {
-            min-width: 150px;
-            background: var(--pale-blue);
-            padding: 12px;
-            border-radius: 18px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-            .suggestion-book img {
-                width: 130px;
-                height: 185px;
-                object-fit: cover;
-                border-radius: 8px;
-                margin-bottom: 8px;
-            }
-
-            .suggestion-book:hover {
-                transform: translateY(-10px);
-                background: var(--soft-blue);
-            }
+.suggestion-book:hover {
+transform: translateY(-10px);
+background: var(--soft-blue);}
     </style>
 </head>
 <body>
@@ -282,15 +267,14 @@
     </div>
 
     <script>
-        // أول ما الصفحة تفتح.. نجيب البيانات اللي اتبعتت من صفحة قائمة الكتب
-        window.onload = function() {
-        const book = JSON.parse(localStorage.getItem('selectedBook'));
-        if (book) {
-        fillData(book.title, book.author, book.id, book.cat, book.year, book.copies, book.description, book.image);
-        }
-        };
-
-        // دالة مساعدة لملء البيانات في الصفحة
+// الربط اهي
+    function goToDetails(title, author, id, cat, year, copies, desc, img) {
+    const selectedBook = { title, author, id, cat, year, copies, description: desc, image: img };
+    localStorage.setItem('selectedBook', JSON.stringify(selectedBook));
+    window.location.href = "book_details.html";
+}
+        
+//_____________________________________________________________________________________________
         function fillData(title, author, id, cat, year, copies, description, imgSource) {
         document.getElementById('book-title').innerText = title;
         document.getElementById('author-name').innerText = author;
@@ -309,7 +293,6 @@
         setTimeout(() => {
         fillData(title, author, id, cat, year, copies, description, imgSource);
         container.style.opacity = "1";
-        // نحدث الذاكرة بالكتاب الجديد عشان لو عمل Refresh يفضل عليه
         localStorage.setItem('selectedBook', JSON.stringify({title, author, id, cat, year, copies, description, image: imgSource}));
         }, 150);
         }
@@ -334,6 +317,13 @@
         }
 
         function goToBookList() { window.location.href = "user_book_list.html"; }
+      
+if (book) {
+fillData(book.title, book.author, book.id, book.cat, book.year, book.copies, book.description, book.image);
+}
+};
+ window.onload = function() {
+const book = JSON.parse(localStorage.getItem('selectedBook'));
     </script>
 </body>
 </html>
