@@ -1,63 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>ADD BOOK & EDIT BOOK</title>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="style add & edit book.css">
 </head>
-
 <body>
 
-     <nav>
+    
+
+    <nav>
         <a href="admin_book_list.html">Books</a> |
-        <a href="admin_profile.html">Profile</a>
-            <a href="logout.html">Sign Up</a>
+        <a href="admin_profile.html">Profile</a> |
+        <a href="index.html">Log out</a>
     </nav>
+    
 
-   
-<hr>
+    <div class="container">
+        <h2 id="form-title">Add New Book</h2>
 
-<h2>Add New Book</h2>
+        <form id="add_form">
+            
+            <label>Book ID</label>
+            <input type="text" name="book_id" id="book_id">
+            <span class="error-msg" id="book_id_err"></span>
 
-<form method="post" action="">
+            <label>Book Name</label>
+            <input type="text" name="book_name" id="book_name" maxlength="170">
+            <span class="error-msg" id="book_name_err"></span>
 
-Book ID<br />
+            <label>Author</label>
+            <input type="text" name="author" id="author" maxlength="170">
+            <span class="error-msg" id="author_err"></span>
 
-<input type="text" size="15" name="book_id">
-<br /><br />
+            <label>Category</label>
+            <select name="category" id="category">
+                <option value="">-- Select --</option>
+                    <option value="Technology">Technology</option>
+                <option value="Science">Science</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Fiction">Fiction</option>
+                <option value="Romance">Romance</option>
+                <option value="History">History</option>
+                <option value="Others">Others</option>
+            </select>
+            <span class="error-msg" id="category_err"></span>
 
-Book Name<br />
+            <input type="submit" value="Add Book">
+            <span class="success-msg" id="success_msg"></span>
+            
+        </form>
+    </div>
 
-<input type="text" size="40" maxlength="170" name="book_name">
-<br /><br />
-
-Author<br />
-
-<input type="text" size="40" maxlength="170" name="author">
-<br /><br />
-
-Category<br />
-
-<select name="category">
-<option value="Technology">Technology</option>
-<option value="Science">Science</option>
-<option value="Comedy">Comedy</option>
-<option value="Fiction">Fiction</option>
-<option value="Romance">Romance</option>
-<option value="History">History</option>
-<option value="Others">Others</option>
-</select>
-
-<br /><br />
-
-Description<br />
-
-<textarea rows="7" cols="60" name="descri">
-</textarea>
-
-<br /><br />
-
- 
-<button type="submit"><a href="admin_book_list.html">Add Book</a> </button>
-</form>
-
-
-
+    <script src="add_book.js"></script>
+</body>
+</html>
