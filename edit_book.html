@@ -1,79 +1,103 @@
- <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit_Book</title>
-</head>
-<body>
+
+var books = [
+    { id: "101", name: "Introduction to AI", author: "Alan Turing", category: "Technology", description: "Basics of Artificial Intelligence" },
+    { id: "102", name: "Data Structures", author: "John Doe", category: "Science", description: "Learn trees and graphs" }
+];
 
 
-    <nav>
-        <a href="admin_book_list.html">Books</a> |
-        <a href="admin_profile.html">Profile</a> |
-        <a href="index.html">Log out</a>
-    </nav>
+function searchBook() {
+    var q = document.getElementById('search_query').value;
+    var queryLower = q.toLowerCase(); 
+    
+    document.getElementById('search_query_err').innerHTML = "";
 
-    <hr>
-<h2>Find Book to Edit</h2>
+    if (q === "") {
+        document.getElementById('search_query_err').innerHTML = "* Please enter a Book ID or name.";
+        return false;
+    }
 
-<form method="post" action="">
+    var foundBook = null;
 
-Enter Book ID or Name<br />
+    
+    for (var i = 0; i < books.length; i++) {
+        var bookIdLower = books[i].id.toLowerCase();
+        var bookNameLower = books[i].name.toLowerCase();
 
-<input type="text" size="20" name="search_query">
-<br /><br />
 
-<input type="submit" value="Search">
+        if (bookIdLower === queryLower || bookNameLower.indexOf(queryLower) !== -1) {
+            foundBook = books[i];
+            break;
+        }
+    }
 
-</form>
+    if (foundBook === null) {
+        document.getElementById('search_query_err').innerHTML = "* No book found.";
+    } else {
+    
+        document.getElementById('edit_book_id').value = foundBook.id;
+        document.getElementById('edit_book_name').value = foundBook.name;
+        document.getElementById('edit_author_name').value = foundBook.author;
+        document.getElementById('edit_category').value = foundBook.category;
+        document.getElementById('edit_descri').value = foundBook.description;
+    }
 
-<hr>
+    return false; 
+}
 
-<h1>Edit Book</h1>
 
-<form method="post" action="">
+function updateBook() {
+    var id = document.getElementById('edit_book_id').value;
+    var name = document.getElementById('edit_book_name').value;
+    var author = document.getElementById('edit_author_name').value;
+    var cat = document.getElementById('edit_category').value;
+    var descri = document.getElementById('edit_descri').value;
 
-Book ID<br />
+    document.getElementById('edit_book_name_err').innerHTML = "";
+    document.getElementById('edit_author_name_err').innerHTML = "";
+    document.getElementById('success_msg').innerHTML = "";
 
-<input type="text" size="15" name="edit_book_id">
-<br /><br />
+    var isValid = true;
 
-Book Name<br />
+    if (id === "") {
+        alert("Search for a book first.");
+        return false;
+    }
 
-<input type="text" size="30" maxlength="100" name="edit_book_name">
-<br /><br />
+    if (name === "") {
+        document.getElementById('edit_book_name_err').innerHTML = "* Book name is required.";
+        isValid = false;
+    } else {
 
-Author Name<br />
+        for (var i = 0; i < books.length; i++) {
+            if (books[i].name.toLowerCase() === name.toLowerCase() && books[i].id !== id) {
+                document.getElementById('edit_book_name_err').innerHTML = "* This name already exists.";
+                isValid = false;
+                break;
+            }
+        }
+    }
 
-<input type="text" size="20" maxlength="50" name="edit_author_name">
-<br /><br />
+    if (author === "") {
+        document.getElementById('edit_author_name_err').innerHTML = "* Author is required.";
+        isValid = false;
+    }
 
-Category<br />
+    
+    if (isValid === true) {
 
-<select name="edit_category">
-<option value="Technology">Technology</option>
-<option value="Science">Science</option>
-<option value="Comedy">Comedy</option>
-<option value="Fiction">Fiction</option>
-<option value="Romance">Romance</option>
-<option value="History">History</option>
-<option value="Others">Others</option>
-</select>
+        for (var j = 0; j < books.length; j++) {
+            if (books[j].id === id) {
+                books[j].name = name;
+                books[j].author = author;
+                books[j].category = cat;
+                books[j].description = descri;
+                break;
+            }
+        }
 
-<br /><br />
+        document.getElementById('success_msg').innerHTML = "Book updated successfully!";
+        document.getElementById('success_msg').style.color = "green";
+    }
 
-Description<br />
-
-<textarea rows="5" cols="50" name="descri">
-</textarea>
-
-<br /><br />
-
- 
-<button type="submit"><a href="admin_book_list.html">Update Book</a> </button>
-
-</form>
-
-</body>
-</html>
+    return false; 
+}
