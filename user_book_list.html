@@ -3,44 +3,29 @@
 <html>
     
 <head>
+    <link rel="stylesheet" href="userbooklist.css">
     <title>Book list</title>
 </head>
 
 <body>
-<nav> 
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        
-        <a href="search.html">Search</a> |
-        <a href="Borrowed_books.html">Borrow book</a>|
-        <a href="index.html">Log out</a>
-    </nav>
-    <hr>
-<!--search list-->
-<h1>Book list</h1>
-<table border="1">
+<div class="menu-icon" id="menuIcon" onclick="toggleMenu()">
+☰
+</div>
+ 
 
-    <tr>
-    <th>Book Cover</th>
-    <th>Title</th>
-    <th>Author</th>
-    <th>Category</th>
-    </tr>
-    
-    <tr>
-    <td><img src="network book1.jpeg" alt="NetworK BOOK" width="100"></td>
-    <td>Computer Networking</td>
-    <td>Erick stack</td>
-    <td>Network</td>
-    </tr>
-    
-    <tr>
-    <td><img src="network book2.jpeg" alt="NetworK BOOK" width="100"></td>
-    <td>Computer Networking</td>
-    <td>Jason Callaway</td>
-    <td>Network</td>
-    </tr>
-    </table>
 
-</body>
+<div class="sidebar" id="sidebar">
+  <h3>Categories</h3>
+
+  <p onclick="showBooks('selfHelp')">Self Help</p>
+  <p onclick="showBooks('fiction')">Fiction</p>
+  <p onclick="showBooks('religious')">Religious</p>
+  <p onclick="showBooks('science')">Science</p>
+</div>
+<div class="container" id="container">
+ 
+</div>
+
+<script src="main.js"></script>
+
 </html>

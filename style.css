@@ -3,11 +3,11 @@
 *{
     padding: 0;
     margin: 0;
-     font-family: "Ubuntu", sans-serif;
+    font-family: "Ubuntu", sans-serif;
 }
 
 body{
-    background-image:linear-gradient(to right,#01162b , #6a90b4)  ;
+    background-image:linear-gradient(to right,#000000 40% , #4400a3)  ;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -70,7 +70,7 @@ label{
     color: white;
 }
 a{
-    color:#01162b ;
+    color:#9a84c4 ;
     text-decoration: none;
 }
 
@@ -88,7 +88,7 @@ input[type="submit"]{
 }
 input[type="submit"]:hover{
     background: white;
-    color:#01162b ;
+    color:#601bde ;
     
 }
 
@@ -120,7 +120,7 @@ input[type="radio"] {
 }
 input[type="radio"]:checked + label {
    background: white;
-   color:#01162b ;
+   color:#3a018a ;
   border-color: white;
   font-weight: bold;
 }
