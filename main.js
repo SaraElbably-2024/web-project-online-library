@@ -1,4 +1,4 @@
-//  Signup  
+//  Signup  -------------------------
 let suUsername = document.getElementById('su-username');
 
 if (suUsername) {
@@ -36,7 +36,7 @@ if (suUsername) {
   });
 }
 
-//  Login 
+// Login-------------------------
 let loginUsername = document.getElementById('login-username');
 
 if (loginUsername) {
@@ -123,7 +123,7 @@ function viewDetails(book) {
     localStorage.setItem('selectedBook', JSON.stringify(bookToSave));
     window.location.href = "Details_books.html";
 }
- 
+ //books data------------------------
 let books = {
 
 selfHelp: [
@@ -194,7 +194,7 @@ description: "Lessons on money, investing, and financial independence."
 },
 
 {
-image: "assets/self_help/when_the _body_says_no.jpg",
+image: "assets/self_help/when_the_body_says_no.jpg",
 title: "When The Body Says No",
 author: "Gabor Maté",
 id: "S007",
@@ -213,6 +213,115 @@ cat: "Self Help",
 year: "2021",
 copies: "6",
 description: "A guide to emotional healing and self-discovery."
+},
+{
+image: "assets/self_help/فن_الكلام.jpg",
+title: "فن الكلام",
+author: "إيهاب فكري",
+id: "S009",
+cat: "Self Help",
+year: "2018",
+copies: "7",
+description: "دليل عملي لتحسين مهارات التواصل والتحدث بثقة."
+},
+
+{
+image: "assets/self_help/محاط_مرضي_نفسيين.jpg",
+title: "محاط بالمرضى النفسيين",
+author: "توماس إريكسون",
+id: "S010",
+cat: "Self Help",
+year: "2019",
+copies: "6",
+description: "يساعدك على فهم الشخصيات الصعبة والتعامل معها بذكاء."
+},
+
+{
+image: "assets/self_help/سيكولوجيا_الانسان_المقهور.jpg",
+title: "سيكولوجية الإنسان المقهور",
+author: "مصطفى حجازي",
+id: "S011",
+cat: "Self Help",
+year: "2005",
+copies: "5",
+description: "تحليل عميق للحالة النفسية في المجتمعات المضغوطة."
+},
+
+{
+image: "assets/self_help/when_the_body_says_no.jpg",
+title: "عندما يقول الجسد لا",
+author: "غابور ماتيه",
+id: "S012",
+cat: "Self Help",
+year: "2003",
+copies: "6",
+description: "يربط بين الضغوط النفسية وتأثيرها على الصحة الجسدية."
+},
+
+{
+image: "assets/self_help/المخ_ذكر_أم_أنثى.jpg",
+title: "المخ ذكر أم أنثى؟",
+author: "د. عمرو شريف",
+id: "S013",
+cat: "Self Help",
+year: "2016",
+copies: "4",
+description: "يستعرض الفروق بين عقول الرجال والنساء بطريقة علمية مبسطة."
+},
+
+{
+image: "assets/self_help/فهم_الامراض_النفسية.jpg",
+title: "فهم الأمراض النفسية",
+author: "دين برنيت",
+id: "S014",
+cat: "Self Help",
+year: "2015",
+copies: "5",
+description: "شرح مبسط للاضطرابات النفسية وكيفية التعامل معها."
+},
+
+{
+image: "assets/self_help/مفتقد_الحياة.jpg",
+title: "مفتقد للحياة",
+author: "د. محمد إبراهيم",
+id: "S015",
+cat: "Self Help",
+year: "2020",
+copies: "6",
+description: "كتاب يناقش الشعور بالفراغ وكيفية استعادة الشغف بالحياة."
+},
+
+{
+image: "assets/self_help/الصحه_النفسيه.jpg",
+title: "الصحة النفسية",
+author: "د. أحمد خيري حافظ",
+id: "S016",
+cat: "Self Help",
+year: "2017",
+copies: "5",
+description: "دليل للحفاظ على التوازن النفسي وتحسين جودة الحياة."
+},
+
+{
+image: "assets/self_help/اكتب حتى لا اصاب بالجنون.jpg",
+title: "اكتب حتى لا أصاب بالجنون",
+author: "مريم التميمي",
+id: "S017",
+cat: "Self Help",
+year: "2021",
+copies: "6",
+description: "رحلة مع الكتابة كوسيلة للتعبير والتفريغ النفسي."
+},
+
+{
+image: "assets/self_help/مستعمل.jpg",
+title: "مستعمل",
+author: "محمد عصام",
+id: "S018",
+cat: "Self Help",
+year: "2022",
+copies: "4",
+description: "نظرة مختلفة للحياة والعلاقات من خلال تجارب واقعية."
 }
 ],
 
@@ -336,6 +445,49 @@ cat: "Fiction",
 year: "2020",
 copies: "6",
 description: "رواية خيالية في عالم مليء بالأسرار."
+},
+{
+image: "assets/Fiction/photo_2_2026-04-11_17-32-35.jpg",
+title: "أرض زيكولا 2: أماريتا",
+author: "عمرو عبد الحميد",
+id: "F012",
+cat: "Fiction",
+year: "2016",
+copies: "8",
+description: "الجزء الثاني من أرض زيكولا، حيث تستكمل الرحلة في عالم أماريتا المليء بالغموض والتحديات."
+},
+
+{
+image: "assets/Fiction/photo_4_2026-04-11_17-32-35.jpg",
+title: "يوتوبيا",
+author: "أحمد خالد توفيق",
+id: "F013",
+cat: "Fiction",
+year: "2008",
+copies: "10",
+description: "رواية ديستوبية تكشف الفجوة بين الطبقات الاجتماعية في مجتمع قاسٍ ومظلم."
+},
+
+{
+image: "assets/Fiction/photo_3_2026-04-11_17-32-35.jpg",
+title: "صديقي السيكوباتي",
+author: "ميرنا المهدي",
+id: "F014",
+cat: "Fiction",
+year: "2022",
+copies: "6",
+description: "قصة نفسية مشوقة تكشف خبايا شخصية غامضة وعلاقات معقدة."
+},
+
+{
+image: "assets/Fiction/photo_1_2026-04-11_17-32-35.jpg",
+title: "وجع البنفسج",
+author: "أسامة المسلم",
+id: "F015",
+cat: "Fiction",
+year: "2021",
+copies: "7",
+description: "رواية مليئة بالغموض والمشاعر العميقة في عالم من الأسرار والتشويق."
 }
 ],
 religious: [
@@ -414,6 +566,27 @@ cat: "Religious",
 year: "2019",
 copies: "7",
 description: "زاد إيماني يساعدك على الثبات في طريق الطاعة."
+},
+{
+image: "assets/religious/wa_alzen_ma3ah.jpg",
+title: "والذين معه",
+author: "أدهم شرقاوي",
+id: "R008",
+cat: "Religious",
+year: "2020",
+copies: "6",
+description: "قصص ومواقف من حياة الصحابة تسلط الضوء على القيم الإيمانية والإنسانية."
+},
+
+{
+image: "assets/religious/na7n_nakos_3alek.jpg",
+title: "نحن نقص عليك",
+author: "أدهم شرقاوي",
+id: "R009",
+cat: "Religious",
+year: "2019",
+copies: "7",
+description: "عرض قصصي جميل لعدد من قصص الأنبياء بأسلوب مبسط ومؤثر."
 }
 ],
 science: [
@@ -536,7 +709,7 @@ if (window.location.href.includes("user_book_list.html") && document.getElementB
         showBooks('selfHelp');
     });
 }
-
+// Search functionality
 
 
 window.addEventListener("DOMContentLoaded", function() {
