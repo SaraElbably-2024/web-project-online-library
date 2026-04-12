@@ -1,11 +1,58 @@
  <!-- Navigation Bar -->
-    <nav> 
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        
-        <a href="search.html">Search</a> |
-        <a href="login.html">Login</a> |
-        <a href="signup.html">Sign Up</a>
+   <!-- ================= NAVBAR ================= -->
+    <nav>
+        <div class="logo">kotoby
+              <img src="assets/main-photos/icon.svg" alt="icon">
+        </div>
+       
+
+        <div >
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="login.html">log in</a>
+            <a href="signup.html">sign up</a>
+           
+        </div>
     </nav>
 
-    <hr>
+
+    css part of the navbar
+    /* =========================
+   NAVBAR (TOP)
+========================= */
+nav {
+   
+   
+     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+     
+}
+nav a {
+    
+     color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 400;
+    transition: color 0.2s;
+    
+}
+
+nav a:hover,nav a.active {
+    
+      color: white;
+    font-weight: 600;
+    
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.logo img {
+    width: 30px; 
+    height: 30px;
+}
