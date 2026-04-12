@@ -5,46 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Library | Lumina</title>
 <style>
-:root {
---dark-blue: #194569;
---medium-blue: #5F84A2;
---soft-blue: #91AEC4;
---white: #ffffff;
---pale-blue-transparent: rgba(219, 236, 244, 0.94);
-        }
+    :root {
+        --dark-blue: #5D54A4;
+        --medium-blue: #9787E1;
+        --soft-blue: #B9C1FF;
+        --white: #ffffff;
+        --pale-blue: rgba(243, 231, 255, 0.8);
+    }
 
 body {
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 margin: 0;
 padding: 0;
 min-height: 100vh;
-color: var(--dark-blue);
-background-image: url('borrowedbook-background.jpg');
+color: var(--white);
+background-image:linear-gradient(to right,#000000 40% , #4400a3)  ;
 background-size: cover;
 background-attachment: fixed;
         }
 
-nav {
-background: var(--dark-blue);
-padding: 1rem;
-text-align: center;
-        }
-
-.nav-links a {
-color: white;
-text-decoration: none;
-margin: 0 15px;
-font-weight: bold;
-        }
-
-.nav-links a.active {
-border-bottom: 2px solid var(--soft-blue);
-            }
-
 .container {
 max-width: 1200px;
-margin: 40px auto;
-padding: 30px;
+margin: 10px auto;
+padding: 10px;
 background: rgba(255, 255, 255, 0.15);
 backdrop-filter: blur(10px);
 border-radius: 30px;
@@ -81,13 +64,13 @@ transform: translateY(-2px);
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
-gap: 30px;
+gap: 15px;
         }
 
 .book-card {
-background: var(--pale-blue-transparent);
+background: rgba(255, 255, 255, 0.1);
 width: 220px;
-padding: 20px;
+padding: 10px;
 border-radius: 20px;
 transition: 0.4s;
 display: flex;
@@ -97,20 +80,20 @@ align-items: center;
 
 .book-card:hover {
 transform: translateY(-10px);
-background: white;
+background: var(--medium-blue);
             }
 
 .book-card img {
-width: 160px;
-height: 230px;
+width: 170px;
+height: 240px;
 object-fit: cover;
-border-radius: 10px;
-margin-bottom: 15px;
+border-radius: 8px;
+margin-bottom: 10px;
             }
 
 .book-card h3 {
 font-size: 1rem;
-margin: 10px 0;
+margin: 0 0;
 height: 45px;
 overflow: hidden;
             }
@@ -120,8 +103,8 @@ font-size: 0.8rem;
 padding: 5px 15px;
 border-radius: 15px;
 margin-bottom: 15px;
-background: #ffcccc;
-color: #cc0000;
+background: var(--medium-blue);
+color:white;
 font-weight: bold;
         }
 
@@ -158,8 +141,7 @@ background: #d9534f;
 
 <div class="filter-button-place">
 <button class="filter-button-shape active" onclick="filterBooks('all', this)">All Books</button>
-<button class="filter-button-shape" onclick="filterBooks('Computer Science', this)">CS & Tech</button>
-<button class="filter-button-shape" onclick="filterBooks('Programming', this)">Programming</button>
+<button class="filter-button-shape" onclick="filterBooks('Science', this)">Science</button>
 <button class="filter-button-shape" onclick="filterBooks('Fiction', this)">Fiction</button>
 <button class="filter-button-shape" onclick="filterBooks('Religious', this)">Religious</button>
 <button class="filter-button-shape" onclick="filterBooks('Self Help', this)">Self Help</button>
