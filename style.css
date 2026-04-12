@@ -82,6 +82,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;  
+    padding-top: 80px;
 }
 
 /* ── Nav bar ── */
@@ -232,3 +233,26 @@ input[type="radio"]:checked + label {
     font-weight: bold;
 }
  
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: white;
+    color: #01162b;
+}
+
+
+select option {
+    color: #01162b;        
+    background: white;     
+}
