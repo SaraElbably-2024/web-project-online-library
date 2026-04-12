@@ -2,55 +2,60 @@
 <html>
 <head>
     <title>Search Books - Online Library</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <!-- Navigation Bar -->
-    <nav> 
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |    
-       <a href="index.html">Log out</a>
+    <nav class="navbar">
+        <div class="nav-brand">Kotoby</div>
+    
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="user_book_list.html">Book List</a>
+            <a href="index.html">Logout</a> 
+        </div>
     </nav>
+    <hr>
+    
+    <div class="container">
+        <h2 id="form-title">Search for a Book</h2>
+
+        <!-- Search Form -->
+        <form id="searchForm">
+            <label>Book Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter book title">
+
+            <br><br>
+
+            <label>Author Name:</label>
+            <input type="text" id="author" name="author" placeholder="Enter author name">
+
+            <br><br>
+
+            <label>Category:</label>
+            <select id="category" name="category">
+                <option value="">Select Category</option>
+                <option>Self Help</option>
+                <option>Fiction</option>
+                <option>Religious</option>
+                <option>Programming</option>
+                <option>Computer Science</option>
+            </select>
+
+            <br><br>
+
+            <label>Publication Year:</label>
+            <input type="number" id="year" name="year" placeholder="Enter Publication Year">
+
+            <br><br>
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
 
     <hr>
-<h2>Search for a Book</h2>
 
-<!-- Search Form -->
-<form>
-
-<label>Book Title:</label>
-<input type="text" name="title" placeholder="Enter book title">
-
-<br><br>
-
-<label>Author Name:</label>
-<input type="text" name="author" placeholder="Enter author name">
-
-<br><br>
-
-<label>Category:</label>
-<select name="category">
-<option value="">Select Category</option>
-<option>Game Development</option>
-<option>Data Scince</option>
-<option>NetworK</option>
-<option>AI</option>
-<option>Web Development</option>
-<option>Cyber Security</option>
-</select>
-
-<br><br>
-
-<label>Publication Year:</label>
-<input type="number" name="year" placeholder="
-Enter Publication Year">
-
-<br><br>
-
-<button type="submit"><a href="Details_books.html">Search</a> </button>
-</form>
-
-<hr>
+    <script src="search.js"></script>
 </body>
 </html>

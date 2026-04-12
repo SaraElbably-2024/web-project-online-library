@@ -94,24 +94,25 @@ icon.textContent = "☰";
 }
 }
 //----------------------
-
 function createCard(book) {
-    let card = document.createElement("div");
-    card.className = "card";
+  let card = document.createElement("div");
+  card.className = "card";
 
-    card.innerHTML = `
-        <img class="bookimg" src="${book.image}" alt="">
-        <p class="booktitle">${book.title}</p>
-        <button class="detailsbtn">
-            View Details
-        </button>
-    `;
+  card.setAttribute("data-title", book.title.toLowerCase());
 
-    card.querySelector(".detailsbtn").addEventListener("click", function () {
-        viewDetails(book);
-    });
+  card.innerHTML = `
+      <img class="bookimg" src="${book.image}" alt="">
+      <p class="booktitle">${book.title}</p>
+      <button class="detailsbtn">
+          View Details
+      </button>
+  `;
 
-    document.getElementById("container").appendChild(card);
+  card.querySelector(".detailsbtn").addEventListener("click", function () {
+      viewDetails(book);
+  });
+
+  document.getElementById("container").appendChild(card);
 }
 function viewDetails(book) {
     const bookToSave = {
@@ -534,4 +535,92 @@ if (window.location.href.includes("user_book_list.html") && document.getElementB
     window.addEventListener("DOMContentLoaded", function() {
         showBooks('selfHelp');
     });
+}
+
+
+
+window.addEventListener("DOMContentLoaded", function() {
+  let params = new URLSearchParams(window.location.search);
+  let searchTitle = params.get("title");
+  let searchAuthor = params.get("author");
+  let searchCategory = params.get("category");
+  let searchYear = params.get("year");
+
+  console.log("Searching for:", {searchTitle, searchAuthor, searchCategory, searchYear});
+
+  if (searchTitle || searchAuthor || searchCategory || searchYear) {
+      filterAndShowBooks(searchTitle, searchAuthor, searchCategory, searchYear);
+  }
+});
+
+function filterAndShowBooks(title, author, category, year) {
+  let allBooks = [];
+  
+  for (let cat in books) {
+      allBooks = allBooks.concat(books[cat]);
+  }
+  
+
+  let filteredBooks = allBooks.filter(book => {
+      let match = true;
+      
+      if (title && !book.title.toLowerCase().includes(title.toLowerCase())) {
+          match = false;
+      }
+      
+      if (author && !book.author.toLowerCase().includes(author.toLowerCase())) {
+          match = false;
+      }
+      
+      if (category && book.cat !== category && book.category !== category) {
+          match = false;
+      }
+      
+      if (year && book.year != year) {
+          match = false;
+      }
+      
+      return match;
+  });
+  
+
+  let container = document.getElementById("container");
+  container.innerHTML = "";
+  
+  if (filteredBooks.length === 0) {
+      container.innerHTML = `<div style="color:white; text-align:center; padding:50px;">
+          😔 No books found matching your search criteria.
+      </div>`;
+      return;
+  }
+  
+  filteredBooks.forEach(book => createCard(book));
+  
+  if (title && filteredBooks.length > 0) {
+      setTimeout(() => {
+          let cards = document.querySelectorAll(".card");
+          for (let card of cards) {
+              let bookTitle = card.querySelector(".booktitle")?.innerText;
+              if (bookTitle && bookTitle.toLowerCase().includes(title.toLowerCase())) {
+                  card.scrollIntoView({behavior: "smooth", block: "center"});
+                  card.classList.add("highlight");
+                  break;
+              }
+          }
+      }, 300);
+  }
+}
+
+function highlightBook(title){
+  let books = document.querySelectorAll(".card");
+
+  books.forEach(book => {
+      let bookTitle = book.getAttribute("data-title");
+
+      if(bookTitle.includes(title.toLowerCase())){
+          
+          book.scrollIntoView({behavior: "smooth", block: "center"});
+          book.classList.add("highlight");
+      }
+  });
 }
