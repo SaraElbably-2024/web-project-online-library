@@ -1,0 +1,177 @@
+:root {
+    --dark-blue: #5D54A4;
+    --medium-blue: #9787E1;
+    --soft-blue: #B9C1FF;
+    --white: #ffffff;
+    --pale-blue: rgba(243, 231, 255, 0.8);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    color: var(--white);
+    background-image: linear-gradient(to right,#000000 40%, #4400a3);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 10px auto;
+    margin-top: 70px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+/* Buttons Styling */
+.filter-button-place {
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-button-shape {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: var(--dark-blue);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+    .filter-button-shape.active, .filter-button-shape:hover {
+        background: var(--medium-blue);
+        transform: translateY(-2px);
+    }
+
+.books-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.book-card {
+    background: rgba(255, 255, 255, 0.1);
+    width: 220px;
+    padding: 10px;
+    border-radius: 20px;
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .book-card:hover {
+        transform: translateY(-10px);
+        background: var(--medium-blue);
+    }
+
+    .book-card img {
+        width: 170px;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .book-card h3 {
+        font-size: 1rem;
+        margin: 0 0;
+        height: 45px;
+        overflow: hidden;
+    }
+
+.status-label {
+    font-size: 0.8rem;
+    padding: 5px 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    background: var(--medium-blue);
+    color: white;
+    font-weight: bold;
+}
+
+.return-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: var(--dark-blue);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .return-button:hover {
+        background: #d9534f;
+    }
+
+
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.menu-icon {
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+}
+
+.nav-brand {
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 400;
+    transition: color 0.2s;
+}
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: white;
+        font-weight: 600;
+    }
+
+.logo {
+    display: flex;
+    gap: 10px;
+}
+
+    .logo img {
+        width: 30px;
+        height: 30px;
+    }

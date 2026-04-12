@@ -1,136 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Library | Lumina</title>
-<style>
-    :root {
-        --dark-blue: #5D54A4;
-        --medium-blue: #9787E1;
-        --soft-blue: #B9C1FF;
-        --white: #ffffff;
-        --pale-blue: rgba(243, 231, 255, 0.8);
-    }
-
-body {
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-margin: 0;
-padding: 0;
-min-height: 100vh;
-color: var(--white);
-background-image:linear-gradient(to right,#000000 40% , #4400a3)  ;
-background-size: cover;
-background-attachment: fixed;
-        }
-
-.container {
-max-width: 1200px;
-margin: 10px auto;
-padding: 10px;
-background: rgba(255, 255, 255, 0.15);
-backdrop-filter: blur(10px);
-border-radius: 30px;
-text-align: center;
-box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-        }
-
-        /* Buttons Styling */
-.filter-button-place {
-margin-bottom: 35px;
-display: flex;
-justify-content: center;
-gap: 10px;
-flex-wrap: wrap;
-        }
-
-.filter-button-shape {
-padding: 12px 25px;
-border: none;
-border-radius: 25px;
-background: var(--dark-blue);
-color: white;
-cursor: pointer;
-transition: 0.3s;
-font-weight: 600;
-        }
-
-.filter-button-shape.active, .filter-button-shape:hover {
-background: var(--medium-blue);
-transform: translateY(-2px);
-            }
-
-.books-grid {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 15px;
-        }
-
-.book-card {
-background: rgba(255, 255, 255, 0.1);
-width: 220px;
-padding: 10px;
-border-radius: 20px;
-transition: 0.4s;
-display: flex;
-flex-direction: column;
-align-items: center;
-        }
-
-.book-card:hover {
-transform: translateY(-10px);
-background: var(--medium-blue);
-            }
-
-.book-card img {
-width: 170px;
-height: 240px;
-object-fit: cover;
-border-radius: 8px;
-margin-bottom: 10px;
-            }
-
-.book-card h3 {
-font-size: 1rem;
-margin: 0 0;
-height: 45px;
-overflow: hidden;
-            }
-
-.status-label {
-font-size: 0.8rem;
-padding: 5px 15px;
-border-radius: 15px;
-margin-bottom: 15px;
-background: var(--medium-blue);
-color:white;
-font-weight: bold;
-        }
-
-.return-button {
-width: 100%;
-padding: 10px;
-border: none;
-border-radius: 10px;
-background: var(--dark-blue);
-color: white;
-font-weight: bold;
-cursor: pointer;
-transition: 0.3s;
-        }
-
-.return-button:hover {
-background: #d9534f;
-            }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kotoby Borrowed books</title>
+    <link rel="stylesheet" href="Borrowed_books.css">
 </head>
 <body>
+
     <nav>
         <div class="nav-left">
-            <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
             <span class="nav-brand">Kotoby</span>
+            <div class="logo">
+                <img src="assets/main-photos/icon.svg" alt="icon">
+            </div>
         </div>
+
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -139,6 +24,7 @@ background: #d9534f;
             <a href="search.html">Search</a>
         </div>
     </nav>
+
 
     <div class="container">
         <h1 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">My Borrowed Collection</h1>
