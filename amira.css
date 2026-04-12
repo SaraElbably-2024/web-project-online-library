@@ -14,7 +14,13 @@
    home_BODY
 ========================= */
 body {
-   background-image:linear-gradient(to right,#15031c 40% , #4400a3)  ;
+   background-image: linear-gradient(
+  to right,
+  #190230 0%,
+  #a72cff 40%,
+  #b79cff 75%,
+ #b79cff  100%
+); 
     color: white;
     
 }
@@ -34,11 +40,12 @@ nav {
 }
 nav a {
     
-     color: rgba(255, 255, 255, 0.7);
+     color: rgba(35, 1, 46, 0.7);
     text-decoration: none;
     margin-left: 24px;
     font-weight: 400;
     transition: color 0.2s;
+    font-weight:bold;
     
 }
 
@@ -46,12 +53,11 @@ nav a:hover,nav a.active {
     
       color: white;
     font-weight: 600;
-    
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
 }
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px; 
+nav a.active {
+    color: white;
 }
 
 .logo img {
@@ -98,7 +104,7 @@ header a {
     padding: 12px 30px;
     margin-left: 20px;
     background: white;
-    color: black;
+    color: rgba(35, 1, 46, 0.7);
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
@@ -106,9 +112,10 @@ header a {
 }
 
 header a:hover {
-    background:black;
+    background: rgba(35, 1, 46, 0.7);
     color:white;
     transform: scale(1.05);
+   
 }
 
 /* =========================
@@ -129,14 +136,15 @@ header a:hover {
     margin-top: 20px;
     padding: 12px 25px;
     background: white;
-    color: black;
+    color: rgba(35, 1, 46, 0.7);
     border-radius: 25px;
     text-decoration: none;
     transition: 0.3s;
+    font-weight: bold;
 }
 
 .bottom a:hover {
-    background:black;
+    background: rgba(35, 1, 46, 0.7);
     color:white;
     transform: scale(1.05);
 }
@@ -191,7 +199,7 @@ header a:hover {
 .about-section h2 {
     font-size: 32px;
     margin-bottom: 20px;
-    color: #a855f7; /* بنفسجي */
+    color: rgba(14, 0, 18, 0.7);;
     
 }
 
