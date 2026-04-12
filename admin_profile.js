@@ -10,7 +10,6 @@ if (!currentUsername) {
 const userData = JSON.parse(localStorage.getItem(currentUsername));
 
 if (userData) {
-  document.getElementById("name").value = userData.username;
   document.getElementById("email").value = userData.email;
   document.getElementById("username").value = userData.username;
   document.getElementById("password").value = userData.password;
