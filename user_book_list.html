@@ -3,29 +3,36 @@
 <html>
     
 <head>
+   
     <link rel="stylesheet" href="userbooklist.css">
     <title>Book list</title>
 </head>
 
 <body>
-<div class="menu-icon" id="menuIcon" onclick="toggleMenu()">
-☰
-</div>
- 
+    <nav>
+        <div class="nav-left">
+            <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
+            <span class="nav-brand">Kotoby</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="user_book_list.html" class="active">Books List</a>
+            <a href="Borrowed_books.html">My Library</a>
+            <a href="search.html">Search</a>
+        </div>
+    </nav>
 
+    <div class="sidebar" id="sidebar">
+        <h3>Categories</h3>
+        <p onclick="showBooks('selfHelp')">Self Help</p>
+        <p onclick="showBooks('fiction')">Fiction</p>
+        <p onclick="showBooks('religious')">Religious</p>
+        <p onclick="showBooks('science')">Science</p>
+    </div>
 
-<div class="sidebar" id="sidebar">
-  <h3>Categories</h3>
+    <div class="container" id="container"></div>
 
-  <p onclick="showBooks('selfHelp')">Self Help</p>
-  <p onclick="showBooks('fiction')">Fiction</p>
-  <p onclick="showBooks('religious')">Religious</p>
-  <p onclick="showBooks('science')">Science</p>
-</div>
-<div class="container" id="container">
- 
-</div>
-
-<script src="main.js"></script>
+    <script src="main.js"></script>
+</body>
 
 </html>
