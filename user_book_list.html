@@ -3,44 +3,37 @@
 <html>
     
 <head>
+   
+    <link rel="stylesheet" href="userbooklist.css">
     <title>Book list</title>
 </head>
 
 <body>
-<nav> 
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        
-        <a href="search.html">Search</a> |
-        <a href="Borrowed_books.html">Borrow book</a>|
-        <a href="index.html">Log out</a>
+    <nav>
+        <div class="nav-left">
+            <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
+            <span class="nav-brand">Kotoby</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="user_book_list.html" class="active">Books List</a>
+            <a href="Borrowed_books.html">My Library</a>
+            <a href="search.html">Search</a>
+        </div>
     </nav>
-    <hr>
-<!--search list-->
-<h1>Book list</h1>
-<table border="1">
 
-    <tr>
-    <th>Book Cover</th>
-    <th>Title</th>
-    <th>Author</th>
-    <th>Category</th>
-    </tr>
-    
-    <tr>
-    <td><img src="network book1.jpeg" alt="NetworK BOOK" width="100"></td>
-    <td>Computer Networking</td>
-    <td>Erick stack</td>
-    <td>Network</td>
-    </tr>
-    
-    <tr>
-    <td><img src="network book2.jpeg" alt="NetworK BOOK" width="100"></td>
-    <td>Computer Networking</td>
-    <td>Jason Callaway</td>
-    <td>Network</td>
-    </tr>
-    </table>
+    <div class="sidebar" id="sidebar">
+        <h3>Categories</h3>
+        <p onclick="showBooks('selfHelp')">Self Help</p>
+        <p onclick="showBooks('fiction')">Fiction</p>
+        <p onclick="showBooks('religious')">Religious</p>
+        <p onclick="showBooks('science')">Science</p>
+    </div>
 
+    <div class="container" id="container"></div>
+
+    <script src="main.js"></script>
 </body>
+
 </html>

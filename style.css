@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 40px;
+    box-sizing: border-box; 
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    z-index: 1000;
+}
+
+.nav-brand {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* hover underline effect */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* active page */
+.nav-links a.active {
+    color: white;
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+body{
+    background-image:linear-gradient(to right,#000000 40% , #4400a3)  ;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;  
+    padding-top: 80px;
+}
+
+/* ── Nav bar ── */
+ 
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-brand {
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 400;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: white;
+    font-weight: 600;
+}
+
+/* ── Main Content ── */
+.main-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+ 
+.container {
+    width: 70vw;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+input {
+    display: block;
+    color: white;
+    padding: 0 16px;
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: height 0.2s, border-radius 0.2s;
+}
+
+input:focus {
+    outline: none;
+    height: 48px;
+    border-radius: 16px;
+    color: white;
+}
+
+input::placeholder {
+    font-weight: 300;
+    opacity: 0.5;
+    color: white;
+}
+
+label {
+    font-weight: 500;
+    color: white;
+}
+
+.container #form-title {
+    text-align: center;
+    color: white;
+    margin-bottom: 24px;
+}
+
+.container #quest {
+    font-weight: 900;
+    padding: 16px;
+    text-align: center;
+    color: white;
+}
+
+a {
+    color: #9a84c4;
+    text-decoration: none;
+}
+
+input[type="submit"] {
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    margin: 16px auto 0;  
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    color: white;
+}
+
+input[type="submit"]:hover {
+    background: white;
+    color: #601bde;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.radio {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 8px 0;
+}
+
+.radio label {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.2s;
+}
+
+input[type="radio"]:checked + label {
+    background: white;
+    color: #3a018a;
+    border-color: white;
+    font-weight: bold;
+}
+ 
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: white;
+    color: #01162b;
+}
+
+
+select option {
+    color: #01162b;        
+    background: white;     
+}

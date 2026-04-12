@@ -1,117 +1,227 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Borrowed Books</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Library | Lumina</title>
+<style>
+:root {
+--dark-blue: #194569;
+--medium-blue: #5F84A2;
+--soft-blue: #91AEC4;
+--white: #ffffff;
+--pale-blue-transparent: rgba(219, 236, 244, 0.94);
+        }
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+margin: 0;
+padding: 0;
+min-height: 100vh;
+color: var(--dark-blue);
+background-image: url('borrowedbook-background.jpg');
+background-size: cover;
+background-attachment: fixed;
+        }
+
+nav {
+background: var(--dark-blue);
+padding: 1rem;
+text-align: center;
+        }
+
+.nav-links a {
+color: white;
+text-decoration: none;
+margin: 0 15px;
+font-weight: bold;
+        }
+
+.nav-links a.active {
+border-bottom: 2px solid var(--soft-blue);
+            }
+
+.container {
+max-width: 1200px;
+margin: 40px auto;
+padding: 30px;
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(10px);
+border-radius: 30px;
+text-align: center;
+box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        /* Buttons Styling */
+.filter-button-place {
+margin-bottom: 35px;
+display: flex;
+justify-content: center;
+gap: 10px;
+flex-wrap: wrap;
+        }
+
+.filter-button-shape {
+padding: 12px 25px;
+border: none;
+border-radius: 25px;
+background: var(--dark-blue);
+color: white;
+cursor: pointer;
+transition: 0.3s;
+font-weight: 600;
+        }
+
+.filter-button-shape.active, .filter-button-shape:hover {
+background: var(--medium-blue);
+transform: translateY(-2px);
+            }
+
+.books-grid {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 30px;
+        }
+
+.book-card {
+background: var(--pale-blue-transparent);
+width: 220px;
+padding: 20px;
+border-radius: 20px;
+transition: 0.4s;
+display: flex;
+flex-direction: column;
+align-items: center;
+        }
+
+.book-card:hover {
+transform: translateY(-10px);
+background: white;
+            }
+
+.book-card img {
+width: 160px;
+height: 230px;
+object-fit: cover;
+border-radius: 10px;
+margin-bottom: 15px;
+            }
+
+.book-card h3 {
+font-size: 1rem;
+margin: 10px 0;
+height: 45px;
+overflow: hidden;
+            }
+
+.status-label {
+font-size: 0.8rem;
+padding: 5px 15px;
+border-radius: 15px;
+margin-bottom: 15px;
+background: #ffcccc;
+color: #cc0000;
+font-weight: bold;
+        }
+
+.return-button {
+width: 100%;
+padding: 10px;
+border: none;
+border-radius: 10px;
+background: var(--dark-blue);
+color: white;
+font-weight: bold;
+cursor: pointer;
+transition: 0.3s;
+        }
+
+.return-button:hover {
+background: #d9534f;
+            }
+</style>
 </head>
 <body>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        
-        <a href="search.html">Search</a> |
-        <a href="Borrowed_books.html">Borrow book</a>|
-        <a href="index.html">Log out</a>
-        </nav>
-         <hr>
-    <h1>My Borrowed Books</h1>
-    <hr>
-   
 
-    <!--helped Hehehe--> <div style="width:800px; margin:0 auto; border:1px solid #ccc; padding:30px;
-    text-align:left; border-radius:10px;
-    background-color: white; box-shadow: 0 40px 8px rgba(0,0,0,0.1);">
-    <!---->
-        <div>
-
-            <div id="book1" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="71q5PkuN7XL._SL1500_.jpg" width="100" height="140"><br>
-                <strong>Clean Code</strong><br>
-                <em>Robert Martin</em><br>
-                Borrowed: 1/3/2026<br>
-                Return: 10/3/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-         
-            <div id="book2" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="OIP.webp" width="100" height="140"><br>
-                <strong>Data Structures</strong><br>
-                <em>Mark Allen Weiss</em><br>
-                Borrowed: 2/3/2026<br>
-                Return: 12/3/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-  
-            <div id="book3" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="OIP (1).webp" width="100" height="140"><br>
-                <strong>Algorithms</strong><br>
-                <em>Thomas H. Cormen</em><br>
-                Borrowed: 5/3/2026<br>
-                Return: 15/3/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-            <div id="book4" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="download.webp" width="100" height="140"><br>
-                <strong>Healing the Child Within</strong><br>
-                <em>Charles L. Whitfield</em><br>
-                Borrowed: 7/8/2023<br>
-                Return: 21/6/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-
-            <div id="book5" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="OIP (2).webp" width="100" height="140"><br>
-                <strong>The Ordinary Myth </strong><br>
-                <em> GaborMaté</em><br>
-                Borrowed: 8/3/2026<br>
-                Return: 15/9/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-            <div id="book6" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="OIP (3).webp" width="100" height="140"><br>
-                <strong>Gartin_Rules_Series</strong><br>
-                <em>Amr Abdel Hamid</em><br>
-                Borrowed: 19/7/2025<br>
-                Return: 20/6/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-            <div id="book7" style="display:inline-block; text-align:center; width:150px; margin:10px; border:1px solid black; padding:5px;">
-                <img src="OIP (4).webp" width="100" height="140"><br>
-                <strong>Noah Alfi_Series</strong><br>
-                <em>Mirna El_Mahdy</em><br>
-                Borrowed: 1/2/2026<br>
-                Return: 10/4/2026<br>
-                <select>
-                    <option>Borrowed</option>
-                    <option>Returned</option>
-                </select>
-            </div>
-
-
+<nav>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="user_book_list.html">Books List</a>
+<a href="Borrowed_books.html" class="active">My Library</a>
+<a href="search.html">Search</a>
         </div>
+    </nav>
 
+<div class="container">
+<h1 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">My Borrowed Collection</h1>
+
+<div class="filter-button-place">
+<button class="filter-button-shape active" onclick="filterBooks('all', this)">All Books</button>
+<button class="filter-button-shape" onclick="filterBooks('Computer Science', this)">CS & Tech</button>
+<button class="filter-button-shape" onclick="filterBooks('Programming', this)">Programming</button>
+<button class="filter-button-shape" onclick="filterBooks('Fiction', this)">Fiction</button>
+<button class="filter-button-shape" onclick="filterBooks('Religious', this)">Religious</button>
+<button class="filter-button-shape" onclick="filterBooks('Self Help', this)">Self Help</button>
+</div>
+
+<div class="books-grid" id="booksGrid">
+</div>
+</div>
+
+<script>
+    function displayBorrowedBooks(filterValue = 'all') {
+    const grid = document.getElementById('booksGrid');
+    // بنجيب بس اللي اليوزر استعاره فعلياً
+    let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
+
+    grid.innerHTML = '';
+
+    if (borrowedBooks.length === 0) {
+    grid.innerHTML = `<p style="color:white; grid-column: 1/-1;">Your Library is Empty.</p>`;
+    return;
+    }
+
+    // الفلترة بناءً على اللي موجود في الاستعارة
+    const filteredBooks = borrowedBooks.filter(book => {
+    return filterValue === 'all' || book.category === filterValue;
+    });
+
+    if (filteredBooks.length === 0) {
+    grid.innerHTML = `<p style="color:white; grid-column: 1/-1;">No books in this category.</p>`;
+    return;
+    }
+
+    filteredBooks.forEach((book, index) => {
+    const card = `
+    <div class="book-card">
+    <img src="${book.image}" alt="${book.title}">
+    <h3>${book.title}</h3>
+    <p>${book.author}</p>
+    <div class="status-label">Borrowed</div>
+    <button class="return-button" onclick="returnBook(${index})">Return Book</button>
+    </div>
+    `;
+    grid.innerHTML += card;
+    });
+    }
+
+    function filterBooks(category, button) {
+    document.querySelectorAll('.filter-button-shape').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    displayBorrowedBooks(category);
+    }
+
+    function returnBook(index) {
+    let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
+    if (confirm(`Do you want to return "${borrowedBooks[index].title}"?`)) {
+    borrowedBooks.splice(index, 1);
+    localStorage.setItem('myLibrary', JSON.stringify(borrowedBooks));
+    displayBorrowedBooks('all');
+    }
+    }
+
+    window.onload = () => displayBorrowedBooks('all');
+</script>
 </body>
 </html>
