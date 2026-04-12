@@ -3,40 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Profile</title>
+    <link rel="stylesheet" href="admin_profile.css">
 </head>
 <body>
 
     <nav>
         <a href="admin_book_list.html">Books</a> |
-        <a href="add_book.html">Add book</a>
-            <a href="index.html">Log out</a>
+        <a href="add_book.html">Add book</a> |
+        <a href="index.html">Log out</a>
     </nav>
 
     <hr>
-    <h1>Admin Profile</h1>
 
-    <h2>Profile Information</h2>
+    <h2>Profile Information</h2> <br><br>
 
-    <form>
+    <form id="profileForm">
 
         <label>Full Name:</label><br>
-        <input type="text" value="اقوي مشروع"><br><br>
+        <input type="text" id="name"><br><br>
 
         <label>Email:</label><br>
-        <input type="email" value="افخم_مشروع@library.com"><br><br>
+        <input type="email" id="email"><br><br>
 
         <label>Username:</label><br>
-        <input type="text" value="المطرشم"><br><br>
+        <input type="text" id="username"><br><br>
 
         <label>Password:</label><br>
-        <input type="password"><br><br>
+        <input type="password" id="password"><br><br>
 
         <label>Role:</label><br>
-        <input type="text" value="ادمن عادي" readonly><br><br>
+        <input type="text" value="Admin" readonly><br><br>
 
         <button type="submit">Update Profile</button>
 
     </form>
+
+    <script src="admin_profile.js"></script>
 
 </body>
 </html>

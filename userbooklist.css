@@ -154,3 +154,18 @@ nav {
     background: white;
     color: #01162b;
 }
+.deletebtn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 80, 80, 0.4);
+    background: rgba(255, 80, 80, 0.15);
+    color: #ff4d4d;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 8px;
+}
+
+    .deletebtn:hover {
+        background: #ff4d4d;
+        color: white;
+    }

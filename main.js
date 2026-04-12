@@ -67,11 +67,14 @@ if (loginUsername) {
       return;
     }
 
-    if (userData.role == '1') {
-      window.location.href = 'admin_book_list.html';
-    } else {
-      window.location.href = 'user_book_list.html';
-    }
+   if (userData.role == '1') {
+  localStorage.setItem("currentUser", username);
+  window.location.href = 'admin_book_list.html';
+} else {
+  localStorage.setItem("currentUser", username);
+  window.location.href = 'user_book_list.html';
+}
+    localStorage.setItem("currentUser", username);
   });
 }
 
