@@ -5,24 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Details | Lumina</title>
     <style>
-:root {
---dark-blue: #194569;
---medium-blue: #5F84A2;
---soft-blue: #91AEC4;
---white: #ffffff;
---pale-blue: rgba(219, 236, 244, 0.94);
-}
-
+        :root {
+            --dark-blue: #5D54A4; 
+            --medium-blue: #9787E1;
+            --soft-blue: #B9C1FF; 
+            --white: #ffffff; 
+            --pale-blue: rgba(243, 231, 255, 0.8);
+        }
 body {
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 margin: 0;
 padding: 0;
 min-height: 100vh;
 color: var(--dark-blue);
-background-image: url('borrowedbook-background.jpg');
+background-image:linear-gradient(to right,#000000 40% , #4400a3)  ;
 background-size: cover;
 background-position: center;
-background-repeat: no-repeat;
 background-attachment: fixed;
 background-blend-mode: overlay;
 overflow-x: hidden;
@@ -64,18 +62,7 @@ transform: translateY(0);
 }
 }
 
-nav {
-background: var(--dark-blue);
-padding: 1rem;
-text-align: center;
-        }
 
-.nav-links a {
-color: white;
-text-decoration: none;
-margin: 0 15px;
-font-weight: bold;
-        }
 
 .container {
 max-width: 1000px;
@@ -188,26 +175,42 @@ gap: 15px;
 overflow-x: auto;
 padding: 10px 0;}
 
-.suggestion-book {
-min-width: 150px;
-background: var(--pale-blue);
-padding: 12px;
-border-radius: 18px;
-text-align: center;
-cursor: pointer;
-transition: 0.3s;}
+        .suggestion-book {
+            min-width: 180px;
+            border-radius: 16px;
+            /* نفس ستايل الكارد */
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-.suggestion-book img {
-width: 130px;
-height: 185px;
-object-fit: cover;
-border-radius: 8px;
-margin-bottom: 8px;
-}
+            .suggestion-book img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-bottom: 8px;
+            }
+            .suggestion-book p {
+                color: white;
+                margin: 10px 0;
+                font-weight: bold;
+                text-align: center;
+            }
 
 .suggestion-book:hover {
 transform: translateY(-10px);
 background: var(--soft-blue);}
+
+
     </style>
 </head>
 <body>
@@ -247,25 +250,29 @@ background: var(--soft-blue);}
         <div class="suggestions">
             <h3>Books you might like</h3>
             <div class="suggestion-grid">
-                <div class="suggestion-book" onclick="updateDetails('بيوت منورة', 'هالة سمير', 'R001', 'Religious', '2023', '8', 'نصائح لبناء أسرة مسلمة سعيدة.', 'assets/religious/buit_menwarah.jpg')">
+                <div class="suggestion-book" onclick="updateDetails('بيوت منورة', 'هالة سمير', 'R001', 'Religious', '2020', '7', 'كتاب يتناول قصصًا واقعية ملهمة عن البيوت المليئة بالإيمان.', 'assets/religious/buit_menwarah.jpg')">
                     <img src="assets/religious/buit_menwarah.jpg"><p>بيوت منورة</p>
                 </div>
-                <div class="suggestion-book" onclick="updateDetails('إلى الله', 'أمير منير', 'R002', 'Religious', '2022', '9', 'رحلة إيمانية مبسطة للتقرب من الله.', 'assets/religious/ela_Allah.jpg')">
+                <div class="suggestion-book" onclick="updateDetails('إلى الله', 'أمير منير', 'R002', 'Religious', '2019', '8', 'رحلة روحية للتقرب إلى الله بأسلوب بسيط ومؤثر.', 'assets/religious/ela_Allah.jpg')">
                     <img src="assets/religious/ela_Allah.jpg"><p>إلى الله</p>
                 </div>
                 <div class="suggestion-book" onclick="updateDetails('Atomic Habits', 'James Clear', 'S001', 'Self Help', '2018', '10', 'Tiny changes, remarkable results.', 'assets/self_help/atomic_habits.png')">
                     <img src="assets/self_help/atomic_habits.png"><p>Atomic Habits</p>
                 </div>
-                <div class="suggestion-book" onclick="updateDetails('فاتتني صلاة', 'إسلام جمال', 'R003', 'Religious', '2020', '10', 'كتاب يساعدك على الالتزام بالصلاة.', 'assets/religious/fatetni_salah.jpg')">
+                <div class="suggestion-book" onclick="updateDetails('فاتتني صلاة', 'إسلام جمال', 'R003', 'Religious', '2017', '10', 'كتاب يوضح أهمية الصلاة وكيفية الالتزام بها.', 'assets/religious/fatetni_salah.jpg')">
                     <img src="assets/religious/fatetni_salah.jpg"><p>فاتتني صلاة</p>
                 </div>
                 <div class="suggestion-book" onclick="updateDetails('The Idiot Brain', 'Dean Burnett', 'S004', 'Self Help', '2016', '7', 'What your head is really up to.', 'assets/self_help/The_Idiot_Brain.jpg')">
                     <img src="assets/self_help/The_Idiot_Brain.jpg"><p>The Idiot Brain</p>
                 </div>
+                <div class="suggestion-book" onclick="updateDetails('Clean Code', 'Robert C. Martin', 'SC001', 'Programming', '2008', '10', 'A handbook of agile software craftsmanship and writing clean, maintainable code.', 'assets/Programming/clean-code.jpg')">
+                    <img src="assets/Programming/clean-code.jpg"><p>Clean Code</p>
+                </div>
+
             </div>
         </div>
     </div>
-
+    title: "Clean Code", author: "Robert C. Martin", category: "Programming", image: "assets/Programming/clean-code.jpg" },
     <script>
         window.onload = function() {
         const book = JSON.parse(localStorage.getItem('selectedBook'));

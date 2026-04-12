@@ -1,11 +1,73 @@
  <!-- Navigation Bar -->
-    <nav> 
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        
-        <a href="search.html">Search</a> |
-        <a href="login.html">Login</a> |
-        <a href="signup.html">Sign Up</a>
+   <!-- ================= NAVBAR ================= -->
+    <nav>
+        <div class="logo">kotoby
+              <img src="assets/main-photos/icon.svg" alt="icon">
+        </div>
+       
+
+        <div >
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="login.html">log in</a>
+            <a href="signup.html">sign up</a>
+           
+        </div>
     </nav>
 
-    <hr>
+
+    body {
+   background-image: linear-gradient(
+  to right,
+  #190230 0%,
+  #a72cff 40%,
+  #b79cff 75%,
+ #b79cff  100%
+); 
+    color: white;
+    
+}
+
+/* =========================
+   NAVBAR (TOP)
+========================= */
+nav {
+   
+   
+     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+     
+}
+nav a {
+    
+     color: rgba(35, 1, 46, 0.7);
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 400;
+    transition: color 0.2s;
+    font-weight:bold;
+    
+}
+
+nav a:hover,nav a.active {
+    
+      color: white;
+    font-weight: 600;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+}
+nav a.active {
+    color: white;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+.logo img {
+    width: 30px; 
+    height: 30px;
+}
