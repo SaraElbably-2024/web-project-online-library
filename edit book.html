@@ -15,6 +15,7 @@
 
     <div class="container">
         <h2 id="form-title">Find Book to Edit</h2>
+
         
         <form id="search_form">
             <label>Enter Book ID or Name</label>
@@ -26,17 +27,21 @@
 
         <br/>
         
+        
 
         <h2 id="form-title">Edit Book</h2>
         
         <form id="edit_form">
             <label>Book ID</label>
             <input type="text" name="edit_book_id" id="edit_book_id" readonly>
+            
 
             <label>Book Name</label>
             <input type="text" name="edit_book_name" id="edit_book_name" maxlength="100">
             <span class="error-msg" id="edit_book_name_err"></span>
 
+
+            
             <label>Author Name</label>
             <input type="text" name="edit_author_name" id="edit_author_name" maxlength="50">
             <span class="error-msg" id="edit_author_name_err"></span>
@@ -53,12 +58,14 @@
             </select>
 
             <label>Description</label>
+            
             <textarea rows="5" name="descri" id="edit_descri"></textarea>
 
             <input type="submit" value="Update Book">
             <span class="success-msg" id="success_msg"></span>
         </form>
     </div>
+    
 
     <script src="edit_book.js"></script>
 </body>
