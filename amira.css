@@ -59,7 +59,11 @@ nav a:hover,nav a.active {
 nav a.active {
     color: white;
 }
-
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
 .logo img {
     width: 30px; 
     height: 30px;
