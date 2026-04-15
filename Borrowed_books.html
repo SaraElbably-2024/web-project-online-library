@@ -1,209 +1,99 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Library | Lumina</title>
-<style>
-    :root {
-        --dark-blue: #5D54A4;
-        --medium-blue: #9787E1;
-        --soft-blue: #B9C1FF;
-        --white: #ffffff;
-        --pale-blue: rgba(243, 231, 255, 0.8);
-    }
-
-body {
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-margin: 0;
-padding: 0;
-min-height: 100vh;
-color: var(--white);
-background-image:linear-gradient(to right,#000000 40% , #4400a3)  ;
-background-size: cover;
-background-attachment: fixed;
-        }
-
-.container {
-max-width: 1200px;
-margin: 10px auto;
-padding: 10px;
-background: rgba(255, 255, 255, 0.15);
-backdrop-filter: blur(10px);
-border-radius: 30px;
-text-align: center;
-box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-        }
-
-        /* Buttons Styling */
-.filter-button-place {
-margin-bottom: 35px;
-display: flex;
-justify-content: center;
-gap: 10px;
-flex-wrap: wrap;
-        }
-
-.filter-button-shape {
-padding: 12px 25px;
-border: none;
-border-radius: 25px;
-background: var(--dark-blue);
-color: white;
-cursor: pointer;
-transition: 0.3s;
-font-weight: 600;
-        }
-
-.filter-button-shape.active, .filter-button-shape:hover {
-background: var(--medium-blue);
-transform: translateY(-2px);
-            }
-
-.books-grid {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 15px;
-        }
-
-.book-card {
-background: rgba(255, 255, 255, 0.1);
-width: 220px;
-padding: 10px;
-border-radius: 20px;
-transition: 0.4s;
-display: flex;
-flex-direction: column;
-align-items: center;
-        }
-
-.book-card:hover {
-transform: translateY(-10px);
-background: var(--medium-blue);
-            }
-
-.book-card img {
-width: 170px;
-height: 240px;
-object-fit: cover;
-border-radius: 8px;
-margin-bottom: 10px;
-            }
-
-.book-card h3 {
-font-size: 1rem;
-margin: 0 0;
-height: 45px;
-overflow: hidden;
-            }
-
-.status-label {
-font-size: 0.8rem;
-padding: 5px 15px;
-border-radius: 15px;
-margin-bottom: 15px;
-background: var(--medium-blue);
-color:white;
-font-weight: bold;
-        }
-
-.return-button {
-width: 100%;
-padding: 10px;
-border: none;
-border-radius: 10px;
-background: var(--dark-blue);
-color: white;
-font-weight: bold;
-cursor: pointer;
-transition: 0.3s;
-        }
-
-.return-button:hover {
-background: #d9534f;
-            }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kotoby Borrowed books</title>
+    <link rel="stylesheet" href="Borrowed_books.css">
 </head>
 <body>
 
-<nav>
-<div class="nav-links">
-<a href="index.html">Home</a>
-<a href="user_book_list.html">Books List</a>
-<a href="Borrowed_books.html" class="active">My Library</a>
-<a href="search.html">Search</a>
+    <nav>
+        <div class="nav-left">
+            <span class="nav-brand">Kotoby</span>
+            <div class="logo">
+                <img src="assets/main-photos/icon.svg" alt="icon">
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="user_book_list.html" class="active">Books List</a>
+            <a href="Borrowed_books.html">My Library</a>
+            <a href="search.html">Search</a>
         </div>
     </nav>
 
-<div class="container">
-<h1 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">My Borrowed Collection</h1>
 
-<div class="filter-button-place">
-<button class="filter-button-shape active" onclick="filterBooks('all', this)">All Books</button>
-<button class="filter-button-shape" onclick="filterBooks('Science', this)">Science</button>
-<button class="filter-button-shape" onclick="filterBooks('Fiction', this)">Fiction</button>
-<button class="filter-button-shape" onclick="filterBooks('Religious', this)">Religious</button>
-<button class="filter-button-shape" onclick="filterBooks('Self Help', this)">Self Help</button>
-</div>
+    <div class="container">
+        <h1 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">My Borrowed Collection</h1>
 
-<div class="books-grid" id="booksGrid">
-</div>
-</div>
+        <div class="filter-button-place">
+            <button class="filter-button-shape active" onclick="filterBooks('all', this)">All Books</button>
+            <button class="filter-button-shape" onclick="filterBooks('Science', this)">Science</button>
+            <button class="filter-button-shape" onclick="filterBooks('Fiction', this)">Fiction</button>
+            <button class="filter-button-shape" onclick="filterBooks('Religious', this)">Religious</button>
+            <button class="filter-button-shape" onclick="filterBooks('Self Help', this)">Self Help</button>
+        </div>
 
-<script>
-    function displayBorrowedBooks(filterValue = 'all') {
-    const grid = document.getElementById('booksGrid');
-    // بنجيب بس اللي اليوزر استعاره فعلياً
-    let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
-
-    grid.innerHTML = '';
-
-    if (borrowedBooks.length === 0) {
-    grid.innerHTML = `<p style="color:white; grid-column: 1/-1;">Your Library is Empty.</p>`;
-    return;
-    }
-
-    // الفلترة بناءً على اللي موجود في الاستعارة
-    const filteredBooks = borrowedBooks.filter(book => {
-    return filterValue === 'all' || book.category === filterValue;
-    });
-
-    if (filteredBooks.length === 0) {
-    grid.innerHTML = `<p style="color:white; grid-column: 1/-1;">No books in this category.</p>`;
-    return;
-    }
-
-    filteredBooks.forEach((book, index) => {
-    const card = `
-    <div class="book-card">
-    <img src="${book.image}" alt="${book.title}">
-    <h3>${book.title}</h3>
-    <p>${book.author}</p>
-    <div class="status-label">Borrowed</div>
-    <button class="return-button" onclick="returnBook(${index})">Return Book</button>
+        <div class="books-grid" id="booksGrid">
+        </div>
     </div>
-    `;
-    grid.innerHTML += card;
-    });
-    }
 
-    function filterBooks(category, button) {
-    document.querySelectorAll('.filter-button-shape').forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-    displayBorrowedBooks(category);
-    }
+    <script>
+        function displayBorrowedBooks(filterValue = 'all') {
+        const grid = document.getElementById('booksGrid');
+        // بنجيب بس اللي اليوزر استعاره فعلياً
+        let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
 
-    function returnBook(index) {
-    let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
-    if (confirm(`Do you want to return "${borrowedBooks[index].title}"?`)) {
-    borrowedBooks.splice(index, 1);
-    localStorage.setItem('myLibrary', JSON.stringify(borrowedBooks));
-    displayBorrowedBooks('all');
-    }
-    }
+        grid.innerHTML = '';
 
-    window.onload = () => displayBorrowedBooks('all');
-</script>
+        if (borrowedBooks.length === 0) {
+        grid.innerHTML = `<p style="color:white; grid-column: 1/-1;">Your Library is Empty.</p>`;
+        return;
+        }
+
+        // الفلترة بناءً على اللي موجود في الاستعارة
+        const filteredBooks = borrowedBooks.filter(book => {
+        return filterValue === 'all' || book.category === filterValue;
+        });
+
+        if (filteredBooks.length === 0) {
+        grid.innerHTML = `<p style="color:white; grid-column: 1/-1;">No books in this category.</p>`;
+        return;
+        }
+
+        filteredBooks.forEach((book, index) => {
+        const card = `
+        <div class="book-card">
+        <img src="${book.image}" alt="${book.title}">
+        <h3>${book.title}</h3>
+        <p>${book.author}</p>
+        <div class="status-label">Borrowed</div>
+        <button class="return-button" onclick="returnBook(${index})">Return Book</button>
+        </div>
+        `;
+        grid.innerHTML += card;
+        });
+        }
+
+        function filterBooks(category, button) {
+        document.querySelectorAll('.filter-button-shape').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        displayBorrowedBooks(category);
+        }
+
+        function returnBook(index) {
+        let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
+        if (confirm(`Do you want to return "${borrowedBooks[index].title}"?`)) {
+        borrowedBooks.splice(index, 1);
+        localStorage.setItem('myLibrary', JSON.stringify(borrowedBooks));
+        displayBorrowedBooks('all');
+        }
+        }
+
+        window.onload = () => displayBorrowedBooks('all');
+    </script>
 </body>
 </html>

@@ -7,84 +7,14 @@
     font-family: "Ubuntu", sans-serif;
 }
 
-.navbar {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 16px 40px;
-    box-sizing: border-box; 
-
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
-    z-index: 1000;
-}
-
-.nav-brand {
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.nav-links {
-    display: flex;
-    gap: 25px;
-}
-
-.nav-links a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-size: 16px;
-    transition: 0.3s;
-    position: relative;
-}
-
-/* hover underline effect */
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0%;
-    height: 2px;
-    background: white;
-    transition: 0.3s;
-}
-
-.nav-links a:hover {
-    color: white;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* active page */
-.nav-links a.active {
-    color: white;
-}
-
-.nav-links a.active::after {
-    width: 100%;
-}
-
-body{
-    background-image:linear-gradient(to right,#000000 40% , #4400a3)  ;
-    height: 100vh;
+body {
+    background-image: linear-gradient(to right, #000000 40%, #4400a3);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;  
-    padding-top: 80px;
 }
-
 /* ── Nav bar ── */
  
 nav {
@@ -94,6 +24,7 @@ nav {
     justify-content: space-between;
     padding: 16px 40px;
      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+     margin-bottom: 16px;
 }
 
 .nav-brand {
