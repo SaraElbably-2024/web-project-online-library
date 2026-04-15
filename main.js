@@ -691,22 +691,27 @@ description: "Advanced guide to MySQL clustering and database systems."
 ]
 };
 
-function showBooks(category){
+function showBooks(category) {
+    let container = document.getElementById("container");
+    let sidebar = document.getElementById("sidebar"); // جلب الـ sidebar
+    let icon = document.getElementById("menuIcon");   // جلب الأيقونة
+    
+    container.innerHTML = "";
 
-let container = document.getElementById("container");
+    localStorage.setItem('currentCategory', category);
 
-container.innerHTML = "";
+    books[category].forEach(book => createCard(book));
 
-books[category].forEach(book => createCard(book));
-
-document.getElementById("sidebar").classList.remove("open");
-
-document.getElementById("menuIcon").style.display = "block";
+  
+    sidebar.classList.remove("open");
+    icon.textContent = "☰"; ة
+    icon.style.display = "block";
 }
-
 if (window.location.href.includes("user_book_list.html") && document.getElementById("container")) {
     window.addEventListener("DOMContentLoaded", function() {
-        showBooks('selfHelp');
+        
+        let savedCategory = localStorage.getItem('currentCategory') || 'selfHelp';
+        showBooks(savedCategory);
     });
 }
 // Search functionality
