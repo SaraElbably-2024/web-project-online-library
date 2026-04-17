@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Add Book</title>
     <link rel="stylesheet" href="style add _ edit book.css">
 </head>
+
 <body>
 
-    
-
     <nav>
-        <a href="admin_book_list.html">Books</a> |
-        <a href="admin_profile.html">Profile</a> |
-        <a href="index.html">Log out</a>
+        <span class="nav-brand" style="display: flex; align-items: center; gap: 10px;">kotoby <img src="assets/main-photos/icon.svg" alt="icon" style="width: 30px; height: 30px;"></span>
+        <div class="nav-links">
+            <a href="admin_book_list.html">Books</a>
+            <a href="add book.html" class="active">Add Book</a>
+            <a href="edit book.html">Edit Book</a>
+            <a href="admin_profile.html">Profile</a>
+            <a href="index.html">Log out</a>
+        </div>
     </nav>
-    
 
     <div class="container">
         <h2 id="form-title">Add New Book</h2>
 
         <form id="add_form">
-            
+
             <label>Book ID</label>
             <input type="text" name="book_id" id="book_id">
             <span class="error-msg" id="book_id_err"></span>
@@ -36,25 +40,41 @@
             <label>Category</label>
             <select name="category" id="category">
                 <option value="">-- Select --</option>
-                    <option value="Technology">Technology</option>
-                <option value="Science">Science</option>
-                <option value="Comedy">Comedy</option>
-                <option value="Fiction">Fiction</option>
-                <option value="Romance">Romance</option>
-                <option value="History">History</option>
-                <option value="Others">Others</option>
+                <option value="selfHelp">Self Help</option>
+                <option value="fiction">Fiction</option>
+                <option value="religious">Religious</option>
+                <option value="science">Science</option>
+                <option value="others">Others</option>
             </select>
             <span class="error-msg" id="category_err"></span>
+
+            <label>Year of Publish</label>
+            <input type="text" name="year" id="year" maxlength="4" placeholder="e.g. 2023">
+            <span class="error-msg" id="year_err"></span>
+
+            <label>Available Copies</label>
+            <input type="text" name="copies" id="copies" maxlength="5" placeholder="e.g. 5">
+            <span class="error-msg" id="copies_err"></span>
+
             <label>Description</label>
-<textarea rows="5" name="description" id="description"></textarea>
+            <textarea rows="5" name="description" id="description"></textarea>
+
+            <label>Book Cover Image</label>
+            <input type="file" name="book_image" id="book_image" accept="image/*">
+            <div id="image_preview_wrapper" style="display:none; margin: 8px 0;">
+                <img id="image_preview" src="" alt="Preview"
+                    style="max-width:120px; max-height:160px; border-radius:6px; border:1px solid #ccc;">
+            </div>
+            <span class="error-msg" id="book_image_err"></span>
 
             <input type="submit" value="Add Book">
             <span class="success-msg" id="success_msg"></span>
-            
+
         </form>
     </div>
 
-    <script src="add_book.js"></script>
+    <script src="add book.js"></script>
 
 </body>
+
 </html>

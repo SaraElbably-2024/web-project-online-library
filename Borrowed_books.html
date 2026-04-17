@@ -1,19 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kotoby Borrowed books</title>
     <link rel="stylesheet" href="Borrowed_books.css">
 </head>
+
 <body>
 
     <nav>
         <div class="nav-left">
-            <span class="nav-brand">Kotoby</span>
-            <div class="logo">
-                <img src="assets/main-photos/icon.svg" alt="icon">
-            </div>
+            <span class="nav-brand" style="display: flex; align-items: center; gap: 10px;">kotoby <img
+                    src="assets/main-photos/icon.svg" alt="icon" style="width: 30px; height: 30px;"></span>
         </div>
 
         <div class="nav-links">
@@ -43,29 +43,29 @@
 
     <script>
         function displayBorrowedBooks(filterValue = 'all') {
-        const grid = document.getElementById('booksGrid');
-        // بنجيب بس اللي اليوزر استعاره فعلياً
-        let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
+            const grid = document.getElementById('booksGrid');
+            // بنجيب بس اللي اليوزر استعاره فعلياً
+            let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
 
-        grid.innerHTML = '';
+            grid.innerHTML = '';
 
-        if (borrowedBooks.length === 0) {
-        grid.innerHTML = `<p style="color:white; grid-column: 1/-1;">Your Library is Empty.</p>`;
-        return;
-        }
+            if (borrowedBooks.length === 0) {
+                grid.innerHTML = `<p style="color:white; grid-column: 1/-1;">Your Library is Empty.</p>`;
+                return;
+            }
 
-        // الفلترة بناءً على اللي موجود في الاستعارة
-        const filteredBooks = borrowedBooks.filter(book => {
-        return filterValue === 'all' || book.category === filterValue;
-        });
+            // الفلترة بناءً على اللي موجود في الاستعارة
+            const filteredBooks = borrowedBooks.filter(book => {
+                return filterValue === 'all' || book.category === filterValue;
+            });
 
-        if (filteredBooks.length === 0) {
-        grid.innerHTML = `<p style="color:white; grid-column: 1/-1;">No books in this category.</p>`;
-        return;
-        }
+            if (filteredBooks.length === 0) {
+                grid.innerHTML = `<p style="color:white; grid-column: 1/-1;">No books in this category.</p>`;
+                return;
+            }
 
-        filteredBooks.forEach((book, index) => {
-        const card = `
+            filteredBooks.forEach((book, index) => {
+                const card = `
         <div class="book-card">
         <img src="${book.image}" alt="${book.title}">
         <h3>${book.title}</h3>
@@ -74,26 +74,27 @@
         <button class="return-button" onclick="returnBook(${index})">Return Book</button>
         </div>
         `;
-        grid.innerHTML += card;
-        });
+                grid.innerHTML += card;
+            });
         }
 
         function filterBooks(category, button) {
-        document.querySelectorAll('.filter-button-shape').forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        displayBorrowedBooks(category);
+            document.querySelectorAll('.filter-button-shape').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            displayBorrowedBooks(category);
         }
 
         function returnBook(index) {
-        let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
-        if (confirm(`Do you want to return "${borrowedBooks[index].title}"?`)) {
-        borrowedBooks.splice(index, 1);
-        localStorage.setItem('myLibrary', JSON.stringify(borrowedBooks));
-        displayBorrowedBooks('all');
-        }
+            let borrowedBooks = JSON.parse(localStorage.getItem('myLibrary')) || [];
+            if (confirm(`Do you want to return "${borrowedBooks[index].title}"?`)) {
+                borrowedBooks.splice(index, 1);
+                localStorage.setItem('myLibrary', JSON.stringify(borrowedBooks));
+                displayBorrowedBooks('all');
+            }
         }
 
         window.onload = () => displayBorrowedBooks('all');
     </script>
 </body>
+
 </html>

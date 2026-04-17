@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html>
-    
+
 <head>
-   
+
     <link rel="stylesheet" href="userbooklist.css">
     <title>Book list</title>
 </head>
@@ -12,7 +11,7 @@
     <nav>
         <div class="nav-left">
             <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
-            <span class="nav-brand">Kotoby</span>
+            <span class="nav-brand" style="display: flex; align-items: center; gap: 10px;">kotoby <img src="assets/main-photos/icon.svg" alt="icon" style="width: 30px; height: 30px;"></span>
         </div>
         <div class="nav-links">
             <a href="index.html">Home</a>
@@ -29,11 +28,13 @@
         <p onclick="showBooks('fiction')">Fiction</p>
         <p onclick="showBooks('religious')">Religious</p>
         <p onclick="showBooks('science')">Science</p>
+
+        <p onclick="showBooks('others')">Others</p>
     </div>
 
     <div class="container" id="container"></div>
 
-    <script src="main.js"></script>
+    <script src="main.js?v=2"></script>
 </body>
 
 </html>
