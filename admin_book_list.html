@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -11,13 +11,14 @@
     <nav>
         <div class="nav-left">
             <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
-            <span class="nav-brand">Admin Panel</span>
+            <span class="nav-brand" style="display: flex; align-items: center; gap: 10px;">kotoby <img src="assets/main-photos/icon.svg" alt="icon" style="width: 30px; height: 30px;"></span>
         </div>
 
         <div class="nav-links">
             <a href="admin_book_list.html" class="active">Books</a>
             <a href="add book.html">Add Book</a>
             <a href="edit book.html">Edit Book</a>
+            <a href="admin_profile.html">Profile</a>
             <a href="index.html">Logout</a>
 
         </div>
@@ -29,6 +30,8 @@
         <p onclick="showBooks('fiction')">Fiction</p>
         <p onclick="showBooks('religious')">Religious</p>
         <p onclick="showBooks('science')">Science</p>
+
+        <p onclick="showBooks('others')">Others</p>
     </div>
 
     <div class="container" id="container"></div>

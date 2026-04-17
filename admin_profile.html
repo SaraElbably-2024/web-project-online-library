@@ -1,44 +1,58 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Admin Profile</title>
-    <link rel="stylesheet" href="admin_profile.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile - Kotoby</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <nav>
-        <a href="admin_book_list.html">Books</a> |
-        <a href="add_book.html">Add book</a> |
-        <a href="index.html">Log out</a>
+        <span class="nav-brand" style="display: flex; align-items: center; gap: 10px;">
+            kotoby <img src="assets/main-photos/icon.svg" alt="icon" style="width: 30px; height: 30px;">
+        </span>
+        <div class="nav-links">
+            <a href="admin_book_list.html">Books</a>
+            <a href="add book.html">Add Book</a>
+            <a href="edit book.html">Edit Book</a>
+            <a href="admin_profile.html" class="active">Profile</a>
+            <a href="index.html">Log out</a>
+        </div>
     </nav>
 
-    <hr>
+    <div class="main-content">
+        <div class="container">
+            <h2 id="form-title">Profile Information</h2>
 
-    <h2>Profile Information</h2> <br><br>
+            <form id="profileForm">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" placeholder="Your name" required>
 
-    <form id="profileForm">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" placeholder="email@example.com" required>
 
-        <label>Full Name:</label><br>
-        <input type="text" id="name"><br><br>
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Username" required>
 
-        <label>Email:</label><br>
-        <input type="email" id="email"><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="New password" required>
 
-        <label>Username:</label><br>
-        <input type="text" id="username"><br><br>
+                <label>Account Role:</label>
+                <input type="text" value="Administrator" readonly style="opacity: 0.7; cursor: not-allowed;">
 
-        <label>Password:</label><br>
-        <input type="password" id="password"><br><br>
-
-        <label>Role:</label><br>
-        <input type="text" value="Admin" readonly><br><br>
-
-        <button type="submit">Update Profile</button>
-
-    </form>
+                <div class="submit">
+                    <input type="submit" value="Update Profile"
+                        style="width: 100%; margin-top: 20px; height: 45px; cursor: pointer; background: white; color: #601bde; border-radius: 8px; border: none; font-weight: bold; transition: 0.3s;">
+                </div>
+            </form>
+        </div>
+    </div>
 
     <script src="admin_profile.js"></script>
 
 </body>
+
 </html>

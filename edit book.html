@@ -1,72 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Edit Book</title>
     <link rel="stylesheet" href="style add _ edit book.css">
 </head>
+
 <body>
 
     <nav>
-        <a href="admin_book_list.html">Books</a> |
-        <a href="admin_profile.html">Profile</a> |
-        <a href="index.html">Log out</a>
+        <span class="nav-brand" style="display: flex; align-items: center; gap: 10px;">kotoby <img
+                src="assets/main-photos/icon.svg" alt="icon" style="width: 30px; height: 30px;"></span>
+        <div class="nav-links">
+            <a href="admin_book_list.html">Books</a>
+            <a href="add book.html">Add Book</a>
+            <a href="edit book.html" class="active">Edit Book</a>
+            <a href="admin_profile.html">Profile</a>
+            <a href="index.html">Log out</a>
+        </div>
     </nav>
 
     <div class="container">
         <h2 id="form-title">Find Book to Edit</h2>
 
-        
         <form id="search_form">
             <label>Enter Book ID or Name</label>
             <input type="text" name="search_query" id="search_query">
             <span class="error-msg" id="search_query_err"></span>
-            
             <input type="submit" value="Search">
         </form>
 
-        <br/>
-        
-        
+        <br />
 
         <h2 id="form-title">Edit Book</h2>
-        
+
         <form id="edit_form">
             <label>Book ID</label>
             <input type="text" name="edit_book_id" id="edit_book_id" readonly>
-            
 
             <label>Book Name</label>
-            <input type="text" name="edit_book_name" id="edit_book_name" maxlength="100">
+            <input type="text" name="edit_book_name" id="edit_book_name" maxlength="170">
             <span class="error-msg" id="edit_book_name_err"></span>
 
-
-            
             <label>Author Name</label>
-            <input type="text" name="edit_author_name" id="edit_author_name" maxlength="50">
+            <input type="text" name="edit_author_name" id="edit_author_name" maxlength="170">
             <span class="error-msg" id="edit_author_name_err"></span>
 
             <label>Category</label>
             <select name="edit_category" id="edit_category">
-                <option value="Technology">Technology</option>
-                <option value="Science">Science</option>
-                <option value="Comedy">Comedy</option>
-                <option value="Fiction">Fiction</option>
-                <option value="Romance">Romance</option>
-                <option value="History">History</option>
-                <option value="Others">Others</option>
+                <option value="selfHelp">Self Help</option>
+                <option value="fiction">Fiction</option>
+                <option value="religious">Religious</option>
+                <option value="science">Science</option>
+                <option value="others">Others</option>
             </select>
 
+            <label>Year of Publish</label>
+            <input type="text" name="edit_year" id="edit_year" maxlength="4">
+            <span class="error-msg" id="edit_year_err"></span>
+
+            <label>Available Copies</label>
+            <input type="text" name="edit_copies" id="edit_copies" maxlength="5">
+            <span class="error-msg" id="edit_copies_err"></span>
+
             <label>Description</label>
-            
             <textarea rows="5" name="descri" id="edit_descri"></textarea>
+
+            <label>Book Cover Image</label>
+
+            <div id="current_image_wrapper" style="margin: 8px 0; display:none;">
+                <p style="margin:0; font-size:0.85em; color:#555;">Current cover:</p>
+                <img id="current_image_preview" src="" alt="Current Cover"
+                    style="max-width:100px; max-height:140px; border-radius:6px; border:1px solid #ccc; margin-top:4px;">
+            </div>
+            <input type="file" name="edit_book_image" id="edit_book_image" accept="image/*">
+            <div id="new_image_preview_wrapper" style="display:none; margin: 6px 0;">
+                <p style="margin:0; font-size:0.85em; color:#555;">New cover preview:</p>
+                <img id="new_image_preview" src="" alt="New Preview"
+                    style="max-width:100px; max-height:140px; border-radius:6px; border:1px solid #ccc; margin-top:4px;">
+            </div>
 
             <input type="submit" value="Update Book">
             <span class="success-msg" id="success_msg"></span>
         </form>
     </div>
-    
 
-    <script src="edit_book.js"></script>
+    <script src="edit book.js"></script>
 </body>
+
 </html>
