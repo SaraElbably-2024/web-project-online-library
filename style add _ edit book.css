@@ -8,7 +8,8 @@
 }
 
 body {
-    background-image: linear-gradient(to right, #000000 40%, #4400a3);
+    background-image: linear-gradient(to bottom, #000000 25%, #4400a3 ,#ffffff );
+   background-attachment: fixed;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
