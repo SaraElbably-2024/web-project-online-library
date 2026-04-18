@@ -17,9 +17,7 @@
             kotoby <img src="assets/main-photos/icon.svg" alt="icon" style="width: 30px; height: 30px;">
         </span>
         <div class="nav-links">
-            <a href="admin_book_list.html">Books</a>
-            <a href="add book.html">Add Book</a>
-            <a href="edit book.html">Edit Book</a>
+            <a id="booklistLink">Booklist</a>
             <a href="admin_profile.html" class="active">Profile</a>
             <a href="index.html">Log out</a>
         </div>
@@ -43,7 +41,7 @@
                 <input type="password" id="password" placeholder="New password" required>
 
                 <label>Account Role:</label>
-                <input type="text" value="Administrator" readonly style="opacity: 0.7; cursor: not-allowed;">
+                <input type="text" id="role" readonly style="opacity: 0.7; cursor: not-allowed;">
 
                 <div class="submit">
                     <input type="submit" value="Update Profile"
