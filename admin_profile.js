@@ -3,15 +3,20 @@ const form = document.getElementById("profileForm");
 let currentUsername = localStorage.getItem("currentUser");
 
 if (!currentUsername) {
-  alert("Security Alert: No active session found. Redirecting to login...");
+  alert("You have to login first");
   window.location.href = "login.html";
-}
+ }
 
 let userData = JSON.parse(localStorage.getItem(currentUsername));
 
-if (!userData || userData.role !== '1') {
-    alert("Access Denied: You do not have Administrator privileges.");
-    window.location.href = "login.html";
+const booklistLink = document.getElementById("booklistLink");
+
+if (booklistLink && userData) {
+  if (userData.role == 1) {
+    booklistLink.href = "admin_book_list.html";
+  } else {
+    booklistLink.href = "user_book_list.html";
+  }
 }
 
 if (userData) {
@@ -19,7 +24,7 @@ if (userData) {
   document.getElementById("email").value = userData.email;
   document.getElementById("username").value = userData.username;
   document.getElementById("password").value = userData.password;
-}
+  document.getElementById("role").value = userData.role == 1 ? "Admin" : "User";}
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -55,5 +60,5 @@ form.addEventListener("submit", function (e) {
 
   currentUsername = newUsername;
 
-  alert("Success: Your profile has been updated smoothly!");
+  alert("Your profile has been updated");
 });
