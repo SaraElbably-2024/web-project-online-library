@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kotoby </title>
+    <title>Kotoby-Home </title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="amira.css">
+    <link rel="stylesheet" href="home_about.css">
     <!-- JavaScript -->
-    <script src="amira.js"></script>
+    <script src="home.js" defer></script>
     <!-- icon -->
     <link rel="icon" href="assets/main-photos/icon.svg" >
 
@@ -19,23 +19,16 @@
 <body>
 
     <!-- ================= NAVBAR ================= -->
-    <nav>
-        <div class="logo">kotoby
-              <img src="assets/main-photos/icon.svg" alt="icon">
-        </div>
-       
-
-        <div>
-            <a  class="active" href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="login.html">log in</a>
-            <a href="signup.html">sign up</a>
-           
-        </div>
-    </nav>
-
-
-    <!-- ================= HERO ================= -->
+     <nav>
+    <span class="nav-brand" style="display: flex; align-items: center; gap: 10px;">kotoby <img src="assets/main-photos/icon.svg" alt="icon" style="width: 30px; height: 30px;"></span>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html" >Sign Up</a>
+    </div>
+  </nav>
+    <!-- ================= HEADER ================= -->
     <header class="home-header">
         <div >
             <h1>welcome to our library</h1>
@@ -44,8 +37,8 @@
                 Explore books, knowledge, and imagination in a new digital world.</p>
             <!--buttons-->
             <div >
-                <a href="signup.html">Sign Up</a>
-                <a href="login.html">Log in</a>
+                <button class="btn" id="signupBtn">Sign Up</button>
+                <button class="btn" id="loginBtn">Log in</button>
             </div>
         </div>
         
@@ -61,8 +54,7 @@
         <h2>Join Our Library Today</h2>
         <p>Create an account to explore and borrow books.</p>
 
-        <a href="signup.html">Get Started</a>
-        
+         <button class="btn" id="getStartedBtn">Get Started</button>
     </section>
 
 
