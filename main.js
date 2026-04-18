@@ -79,7 +79,7 @@ if (loginUsername) {
         // Role Validation: Check if selected role matches actual role
         let selectedRole = document.querySelector('input[name="is_admin"]:checked').value;
         if (userData.role !== selectedRole) {
-            alert('Error: Access denied. This account is registered as a ' + (userData.role === '1' ? 'Admin' : 'User') + '.');
+            alert('Account not found! Please check your username or Sign Up first.');
             return;
         }
 
