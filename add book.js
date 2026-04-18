@@ -1,6 +1,6 @@
 
 
-// Role Validation for Admin Pages
+
 (function () {
     const currentUser = localStorage.getItem("currentUser");
     if (!currentUser) {
