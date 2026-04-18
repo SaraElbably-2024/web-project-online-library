@@ -4,14 +4,14 @@
 (function () {
     const currentUser = localStorage.getItem("currentUser");
     if (!currentUser) {
-        alert("Access Denied: Please log in first.");
+        alert(" Please log in first ");
         window.location.href = "login.html";
         return;
     }
 
     const userData = JSON.parse(localStorage.getItem(currentUser));
     if (!userData || userData.role !== '1') {
-        alert("Access Denied: You do not have Administrator privileges.");
+        alert(" You do not have Administrator privileges ");
         window.location.href = "login.html";
         return;
     }
