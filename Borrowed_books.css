@@ -13,9 +13,8 @@ body {
     min-height: 100vh;
     color: var(--white);
     background-image: linear-gradient(to bottom, #000000 25%, #4400a3 ,#ffffff );
-   background-attachment: fixed;
-    background-size: cover;
     background-attachment: fixed;
+    background-size: cover;
 }
 
 .container {
@@ -50,10 +49,10 @@ body {
     font-weight: 600;
 }
 
-    .filter-button-shape.active, .filter-button-shape:hover {
-        background: var(--medium-blue);
-        transform: translateY(-2px);
-    }
+.filter-button-shape.active, .filter-button-shape:hover {
+    background: var(--medium-blue);
+    transform: translateY(-2px);
+}
 
 .books-grid {
     display: flex;
@@ -73,25 +72,25 @@ body {
     align-items: center;
 }
 
-    .book-card:hover {
-        transform: translateY(-10px);
-        background: var(--medium-blue);
-    }
+.book-card:hover {
+    transform: translateY(-10px);
+    background: var(--medium-blue);
+}
 
-    .book-card img {
-        width: 170px;
-        height: 240px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
+.book-card img {
+    width: 170px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
 
-    .book-card h3 {
-        font-size: 1rem;
-        margin: 0 0;
-        height: 45px;
-        overflow: hidden;
-    }
+.book-card h3 {
+    font-size: 1rem;
+    margin: 0 0;
+    height: 45px;
+    overflow: hidden;
+}
 
 .status-label {
     font-size: 0.8rem;
@@ -115,10 +114,9 @@ body {
     transition: 0.3s;
 }
 
-    .return-button:hover {
-        background: #d9534f;
-    }
-
+.return-button:hover {
+    background: #d9534f;
+}
 
 nav {
     width: 100%;
@@ -161,23 +159,23 @@ nav {
     transition: color 0.2s;
 }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-        color: white;
-        font-weight: 600;
-    }
+.nav-links a:hover,
+.nav-links a.active {
+    color: white;
+    font-weight: 600;
+}
 
 .logo {
     display: flex;
     gap: 10px;
 }
 
-    .logo img {
-        width: 30px;
-        height: 30px;
-    }
+.logo img {
+    width: 30px;
+    height: 30px;
+}
 
-    /* =========================
+/* =========================
    RESPONSIVE
 ========================= */
 
@@ -198,9 +196,7 @@ nav {
     }
 }
 
- 
- 
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
     /* Nav */
     nav {
         padding: 10px 16px;
@@ -227,10 +223,11 @@ nav {
         font-size: 12px;
         margin-left: 8px;
     }
+
     .nav-links a.btn {
         padding: 5px 8px;
         font-size: 12px;
-}
+    }
 
     /* Container */
     .container {
@@ -280,4 +277,4 @@ nav {
         padding: 8px;
         font-size: 13px;
     }
- 
+}

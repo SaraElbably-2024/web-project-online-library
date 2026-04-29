@@ -12,11 +12,10 @@ body {
     padding: 0;
     min-height: 100vh;
     color: var(--dark-blue);
-     background-image: linear-gradient(to bottom, #000000 25%, #4400a3 ,#ffffff );
-   background-attachment: fixed;
+    background-image: linear-gradient(to bottom, #000000 25%, #4400a3 ,#ffffff );
+    background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     background-blend-mode: overlay;
     overflow-x: hidden;
 }
@@ -27,7 +26,6 @@ body {
         opacity: 0;
         transform: translateX(-60px) rotateY(-10deg);
     }
-
     100% {
         opacity: 1;
         transform: translateX(0) rotateY(-22deg);
@@ -39,7 +37,6 @@ body {
         opacity: 0;
         transform: translateX(60px);
     }
-
     100% {
         opacity: 1;
         transform: translateX(0);
@@ -51,7 +48,6 @@ body {
         opacity: 0;
         transform: translateY(30px);
     }
-
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -85,19 +81,19 @@ body {
     animation: slideFromLeft 0.5s ease-out;
 }
 
-    .book-cover-part img {
-        width: 260px;
-        height: 380px;
-        object-fit: cover;
-        border-radius: 5px 15px 15px 5px;
-        transform: rotateY(-20deg) rotateX(4deg);
-        transition: transform 0.3s linear;
-        cursor: pointer;
-    }
+.book-cover-part img {
+    width: 260px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 5px 15px 15px 5px;
+    transform: rotateY(-20deg) rotateX(4deg);
+    transition: transform 0.3s linear;
+    cursor: pointer;
+}
 
-    .book-cover-part:hover img {
-        transform: rotateY(0deg) rotateX(0deg) scale(1.05);
-    }
+.book-cover-part:hover img {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+}
 
 .book-info-part {
     flex: 1.5;
@@ -147,11 +143,11 @@ button {
     flex: 2;
 }
 
-    .borrow-button:hover {
-        background: #123450;
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px black;
-    }
+.borrow-button:hover {
+    background: #123450;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px black;
+}
 
 .back-button {
     background: rgba(0,0,0,0.08);
@@ -159,21 +155,21 @@ button {
     flex: 1;
 }
 
-    .back-button:hover {
-        background: var(--soft-blue);
-        color: white;
-        transform: translateY(-3px);
-    }
+.back-button:hover {
+    background: var(--soft-blue);
+    color: white;
+    transform: translateY(-3px);
+}
 
 .suggestions {
     margin-top: 40px;
     animation: slideFromBottom 0.8s ease-out;
 }
 
-    .suggestions h3 {
-        color: white;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-    }
+.suggestions h3 {
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
 
 .suggestion-grid {
     display: flex;
@@ -198,27 +194,25 @@ button {
     transition: all 0.3s ease;
 }
 
-    .suggestion-book img {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 8px;
-    }
+.suggestion-book img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
 
-    .suggestion-book p {
-        color: white;
-        margin: 10px 0;
-        font-weight: bold;
-        text-align: center;
-    }
+.suggestion-book p {
+    color: white;
+    margin: 10px 0;
+    font-weight: bold;
+    text-align: center;
+}
 
-    .suggestion-book:hover {
-        transform: translateY(-10px);
-        background: var(--soft-blue);
-    }
-
-
+.suggestion-book:hover {
+    transform: translateY(-10px);
+    background: var(--soft-blue);
+}
 
 nav {
     width: 100%;
@@ -261,23 +255,23 @@ nav {
     transition: color 0.2s;
 }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-        color: white;
-        font-weight: 600;
-    }
+.nav-links a:hover,
+.nav-links a.active {
+    color: white;
+    font-weight: 600;
+}
 
 .logo {
     display: flex;
     gap: 10px;
 }
 
-    .logo img {
-        width: 30px;
-        height: 30px;
-    }
+.logo img {
+    width: 30px;
+    height: 30px;
+}
 
-    /* =========================
+/* =========================
    RESPONSIVE
 ========================= */
 
@@ -298,11 +292,6 @@ nav {
 
     .book-info-part {
         padding: 20px;
-    }
-
-    .about-header {
-        gap: 40px;
-        padding: 40px 40px 20px;
     }
 }
 
@@ -334,9 +323,10 @@ nav {
         margin-left: 8px;
     }
 
-    /* باقي الكود زي ما هو... */
-   
-
+    .nav-links a.btn {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
 
     /* Book Details */
     .book-cover-part {
