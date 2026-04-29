@@ -276,3 +276,87 @@ nav {
         width: 30px;
         height: 30px;
     }
+
+    /* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .book-details-main {
+        flex-direction: column;
+    }
+
+    .book-cover-part img {
+        width: 200px;
+        height: 300px;
+    }
+
+    .book-info-part {
+        padding: 20px;
+    }
+
+    .about-header {
+        gap: 40px;
+        padding: 40px 40px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Nav */
+    nav {
+        padding: 10px 16px;
+    }
+
+    .nav-brand {
+        font-size: 18px;
+    }
+
+    .logo img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+        margin-left: 8px;
+    }
+
+    /* Book Details */
+    .book-cover-part {
+        padding: 20px;
+    }
+
+    .book-cover-part img {
+        width: 160px;
+        height: 240px;
+        transform: rotateY(0deg);
+    }
+
+    .book-info-part {
+        padding: 16px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .borrow-button,
+    .back-button {
+        flex: unset;
+        width: 100%;
+    }
+
+    /* Suggestions */
+    .suggestion-book {
+        min-width: 140px;
+    }
+
+    .suggestion-book img {
+        height: 170px;
+    }
+}

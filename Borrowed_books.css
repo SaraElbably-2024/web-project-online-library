@@ -176,3 +176,94 @@ nav {
         width: 30px;
         height: 30px;
     }
+
+    /* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+    .container {
+        margin: 70px 15px 15px;
+        padding: 15px;
+        border-radius: 20px;
+    }
+
+    .book-card {
+        width: 180px;
+    }
+
+    .book-card img {
+        width: 140px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Nav */
+    nav {
+        padding: 10px 16px;
+    }
+
+    .nav-brand {
+        font-size: 18px;
+    }
+
+    .logo img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+        margin-left: 8px;
+    }
+
+    /* Container */
+    .container {
+        margin: 65px 10px 10px;
+        padding: 12px;
+        border-radius: 16px;
+    }
+
+    /* Filter Buttons */
+    .filter-button-place {
+        gap: 6px;
+        margin-bottom: 20px;
+    }
+
+    .filter-button-shape {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    /* Books Grid */
+    .books-grid {
+        gap: 10px;
+    }
+
+    .book-card {
+        width: 150px;
+        padding: 8px;
+        border-radius: 14px;
+    }
+
+    .book-card img {
+        width: 120px;
+        height: 170px;
+    }
+
+    .book-card h3 {
+        font-size: 0.85rem;
+        height: 40px;
+    }
+
+    .status-label {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+
+    .return-button {
+        padding: 8px;
+        font-size: 13px;
+    }
+}
