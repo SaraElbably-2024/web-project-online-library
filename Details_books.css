@@ -313,18 +313,21 @@ nav {
     }
 
     .nav-brand {
-        font-size: 18px;
+        font-size: 16px;  /* كانت 18px */
     }
 
     .logo img {
-        width: 20px;
-        height: 20px;
+        width: 20px !important;
+        height: 20px !important;
     }
 
     .nav-links a {
         font-size: 12px;
         margin-left: 8px;
     }
+
+    
+
 
     /* Book Details */
     .book-cover-part {

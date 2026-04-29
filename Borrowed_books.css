@@ -198,25 +198,30 @@ nav {
     }
 }
 
-@media (max-width: 600px) {
+ 
+ 
+    @media (max-width: 600px) {
     /* Nav */
     nav {
         padding: 10px 16px;
     }
 
     .nav-brand {
-        font-size: 18px;
+        font-size: 16px;  /* كانت 18px */
     }
 
     .logo img {
-        width: 20px;
-        height: 20px;
+        width: 20px !important;
+        height: 20px !important;
     }
 
     .nav-links a {
         font-size: 12px;
         margin-left: 8px;
     }
+
+    /* باقي الكود زي ما هو */
+}
 
     /* Container */
     .container {
@@ -266,4 +271,4 @@ nav {
         padding: 8px;
         font-size: 13px;
     }
-}
+ 
