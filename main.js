@@ -609,10 +609,10 @@ let books = {
     ],
     science: [
         {
-            image: "assets/Programming/clean-code.jpg",
+            image: "assets/Science/clean-code.jpg",
             title: "Clean Code",
             author: "Robert C. Martin",
-            id: "SC001",
+            id: "SC001",    
             cat: "Programming",
             year: "2008",
             copies: "10",
@@ -620,7 +620,7 @@ let books = {
         },
 
         {
-            image: "assets/Programming/ds-and-algo.webp",
+            image: "assets/Science/ds-and-algo.webp",
             title: "Data Structures & Algorithm Analysis",
             author: "Mark Allen Weiss",
             id: "SC002",
@@ -631,7 +631,7 @@ let books = {
         },
 
         {
-            image: "assets/cs_and_tech/network book1.jpeg",
+            image: "assets/Science/network book1.jpeg",
             title: "Computer Networking",
             author: "Jason Callaway",
             id: "SC003",
@@ -642,7 +642,7 @@ let books = {
         },
 
         {
-            image: "assets/cs_and_tech/OIP (1).webp",
+            image: "assets/Science/OIP (1).webp",
             title: "Introduction to Algorithms",
             author: "Thomas H. Cormen",
             id: "SC004",
@@ -653,7 +653,7 @@ let books = {
         },
 
         {
-            image: "assets/cs_and_tech/java.jpg",
+            image: "assets/Science/java.jpg",
             title: "Java Programming",
             author: "Joyce Farrell",
             id: "SC005",
@@ -664,7 +664,7 @@ let books = {
         },
 
         {
-            image: "assets/cs_and_tech/python.jpg",
+            image: "assets/Science/python.jpg",
             title: "Python Programming",
             author: "Eric Matthes",
             id: "SC006",
@@ -675,7 +675,7 @@ let books = {
         },
 
         {
-            image: "assets/cs_and_tech/flutter.jpg",
+            image: "assets/Science/flutter.jpg",
             title: "Google Flutter Guide",
             author: "Prajyot Mainkar",
             id: "SC007",
@@ -686,7 +686,7 @@ let books = {
         },
 
         {
-            image: "assets/cs_and_tech/ai engineering.jpg",
+            image: "assets/Science/ai engineering.jpg",
             title: "AI Engineering",
             author: "Chip Huyen",
             id: "SC008",

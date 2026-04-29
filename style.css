@@ -13,7 +13,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;  
+     background-attachment: fixed;
+
 }
 
 /* ── Nav bar ── */
@@ -21,12 +22,15 @@ body {
 nav {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding: 16px 40px;
-     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-     margin-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 16px;
+    gap: 10px;
 }
+
 
 .nav-brand {
     color: white;
@@ -46,6 +50,25 @@ nav {
 .nav-links a.active {
     color: white;
     font-weight: 600;
+}
+
+
+@media (max-width: 600px) {
+    nav {
+        padding: 12px 16px;
+        justify-content: center;
+    }
+
+    .nav-brand {
+        width: 100%;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 }
 
 /* ── Main Content ── */
@@ -122,13 +145,13 @@ input[type="submit"] {
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-    width: 300px;
+    width: 100%;          
+    max-width: 300px;  
     margin: 16px auto 0;  
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
     color: white;
 }
-
 input[type="submit"]:hover {
     background: white;
     color: #601bde;
