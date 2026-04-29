@@ -313,7 +313,7 @@ nav {
     }
 
     .nav-brand {
-        font-size: 16px;  /* كانت 18px */
+        font-size: 16px;
     }
 
     .logo img {
@@ -321,12 +321,21 @@ nav {
         height: 20px !important;
     }
 
+    .nav-left {
+        gap: 8px;
+    }
+
+    .menu-icon {
+        font-size: 20px;
+    }
+
     .nav-links a {
         font-size: 12px;
         margin-left: 8px;
     }
 
-    
+    /* باقي الكود زي ما هو... */
+   
 
 
     /* Book Details */
