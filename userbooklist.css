@@ -230,38 +230,5 @@ nav {
 
 
 
-/* تنسيق الجوال المصحح ليعمل مع الكلاسات الخاصة بك */
-@media (max-width: 600px) {
-    .container {
-        display: grid !important; /* تحويله إلى شبكة */
-        grid-template-columns: repeat(3, 1fr) !important; /* 3 أعمدة */
-        gap: 8px; 
-        padding: 80px 10px 20px; /* تقليل الهوامش لتوفير مساحة */
-    }
 
-    .card {
-        width: 100% !important; /* جعل الكرت يأخذ عرض العمود بالكامل */
-        padding: 8px;
-        border-radius: 8px;
-    }
-
-    .bookimg {
-        height: 120px; /* تصغير الصورة لتناسب الـ 3 أعمدة */
-    }
-
-    .booktitle {
-        font-size: 0.7rem;
-        margin: 5px 0;
-        height: 2.2rem;
-        overflow: hidden;
-    }
-
-    /* تصغير الأزرار لتناسب المساحة */
-    .detailsbtn, .deletebtn, .editbtn {
-        padding: 4px 6px;
-        font-size: 0.6rem;
-        width: 100%;
-        margin-top: 4px;
-    }
-}
 
